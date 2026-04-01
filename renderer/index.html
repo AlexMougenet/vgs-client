@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VGS Companion</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Connect View -->
+  <div id="view-connect" class="view active">
+    <div class="logo">
+      <h1>VGS</h1>
+      <p class="subtitle">Voice Guided System</p>
+    </div>
+    <div class="form-group">
+      <label for="server-url">Server URL</label>
+      <input type="text" id="server-url" value="https://vgs-server.onrender.com"
+        placeholder="https://vgs-server.onrender.com">
+    </div>
+    <div class="form-group">
+      <label for="player-name">Player Name</label>
+      <div class="input-row">
+        <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+        <input type="color" id="player-color" value="#7cacff" title="Choose your name color">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="room-code">Room Code</label>
+      <div class="input-row">
+        <input type="text" id="room-code" placeholder="Enter room code" maxlength="20" autocomplete="off">
+        <button id="btn-generate" class="btn-secondary" title="Generate random code">&#x2684;</button>
+      </div>
+    </div>
+    <button id="btn-join" class="btn-primary">Join Room</button>
+    <button id="btn-create" class="btn-primary btn-outline">Create &amp; Join Room</button>
+  </div>
+
+  <!-- Lobby View -->
+  <div id="view-lobby" class="view">
+    <div class="lobby-header">
+      <div class="room-info">
+        <span class="room-label">Room:</span>
+        <span id="lobby-room-code" class="room-code-display"></span>
+        <button id="btn-copy-code" class="btn-icon" title="Copy room code">&#x2398;</button>
+      </div>
+      <div id="status-indicator" class="status disconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">Disconnected</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Players</h3>
+      <ul id="player-list" class="player-list"></ul>
+    </div>
+
+    <div class="section">
+      <h3>VGS Commands <span class="hint">(press V to start)</span></h3>
+      <div id="vgs-active-indicator" class="vgs-indicator hidden">VGS Active...</div>
+      <div id="command-tree" class="command-tree"></div>
+    </div>
+
+    <div class="section">
+      <h3>Recent</h3>
+      <div id="event-log" class="event-log"></div>
+    </div>
+
+    <div class="lobby-footer">
+      <button id="btn-settings" class="btn-secondary">Settings</button>
+      <button id="btn-disconnect" class="btn-danger">Disconnect</button>
+    </div>
+  </div>
+
+  <!-- Settings View -->
+  <div id="view-settings" class="view">
+    <div class="settings-header">
+      <button id="btn-back-arrow" class="btn-icon" title="Back to Lobby">&#x2190;</button>
+      <h2>Settings</h2>
+    </div>
+    <div class="form-group">
+      <label for="volume-slider">Volume</label>
+      <input type="range" id="volume-slider" min="0" max="100" value="80">
+      <span id="volume-value">80%</span>
+    </div>
+    <div class="form-group toggle-group">
+      <label for="toggle-overlay">Show overlay</label>
+      <input type="checkbox" id="toggle-overlay" checked>
+    </div>
+    <div class="form-group toggle-group">
+      <label for="toggle-own-sounds">Play sounds for my own commands</label>
+      <input type="checkbox" id="toggle-own-sounds" checked>
+    </div>
+    <button id="btn-keybinds" class="btn-primary btn-outline">Customize Keybinds</button>
+    <button id="btn-back" class="btn-primary">Back to Lobby</button>
+  </div>
+
+  <!-- Keybinds View -->
+  <div id="view-keybinds" class="view">
+    <div class="keybinds-header">
+      <div class="settings-header">
+        <button id="btn-keybinds-back-arrow" class="btn-icon" title="Save &amp; Back">&#x2190;</button>
+        <h2>Keybinds</h2>
+      </div>
+      <p class="hint">Click a key sequence to rebind. Press Escape to cancel.</p>
+    </div>
+
+    <div class="form-group">
+      <label>Activation Key</label>
+      <div class="keybind-activation">
+        <button id="bind-activation-key" class="keybind-btn" data-bind="activation">V</button>
+        <span class="hint">The key that starts every VGS sequence</span>
+      </div>
+    </div>
+
+    <div class="keybinds-search">
+      <input type="text" id="keybind-search" placeholder="Search commands...">
+    </div>
+
+    <div id="keybind-list" class="keybind-list"></div>
+
+    <div class="keybinds-footer">
+      <button id="btn-reset-keybinds" class="btn-danger">Reset to Defaults</button>
+      <button id="btn-keybinds-back" class="btn-primary">Save &amp; Back</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

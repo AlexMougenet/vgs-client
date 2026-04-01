@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VGS Overlay</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: transparent;
+      overflow: hidden;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      height: 100%;
+      width: 100%;
+    }
+    #toast-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding-top: 8px;
+      gap: 6px;
+    }
+    .toast {
+      background: rgba(15, 15, 25, 0.88);
+      border: 1px solid rgba(100, 140, 255, 0.35);
+      border-radius: 12px;
+      padding: 14px 28px;
+      color: #e8eaed;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 360px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .toast.fade-out {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .toast .player {
+      color: #7cacff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div id="toast-container"></div>
+  <script>
+    const MAX_TOASTS = 5;
+    const TOAST_DURATION = 3000;
+    const FADE_DURATION = 250;
+
+    const container = document.getElementById('toast-container');
+    const activeToasts = [];
+
+    window.vgsAPI.onShowCallout(({ playerName, label, playerColor }) => {
+      addToast(playerName, label, playerColor);
+    });
+
+    function addToast(playerName, label, playerColor) {
+      // If at capacity, remove the oldest toast immediately
+      if (activeToasts.length >= MAX_TOASTS) {
+        removeToast(activeToasts[activeToasts.length - 1]);
+      }
+
+      const color = playerColor || '#7cacff';
+      const el = document.createElement('div');
+      el.className = 'toast';
+      el.innerHTML = `<span class="player" style="color:${escapeHtml(color)}">${escapeHtml(playerName)}</span>: ${escapeHtml(label)}`;
+
+      // Insert at the top of the container (newest first)
+      container.prepend(el);
+
+      // Force reflow so the transition triggers
+      el.offsetHeight;
+      el.classList.add('visible');
+
+      const toast = { el, timer: null };
+
+      // Add to the front of our tracking list (index 0 = newest)
+      activeToasts.unshift(toast);
+
+      // Schedule auto-dismiss
+      toast.timer = setTimeout(() => {
+        dismissToast(toast);
+      }, TOAST_DURATION);
+    }
+
+    function dismissToast(toast) {
+      if (toast.timer) {
+        clearTimeout(toast.timer);
+        toast.timer = null;
+      }
+      toast.el.classList.remove('visible');
+      toast.el.classList.add('fade-out');
+
+      setTimeout(() => {
+        removeToast(toast);
+      }, FADE_DURATION);
+    }
+
+    function removeToast(toast) {
+      if (toast.timer) {
+        clearTimeout(toast.timer);
+        toast.timer = null;
+      }
+      const idx = activeToasts.indexOf(toast);
+      if (idx !== -1) activeToasts.splice(idx, 1);
+      if (toast.el.parentNode) toast.el.remove();
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

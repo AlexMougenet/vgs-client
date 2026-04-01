@@ -1,0 +1,834 @@
+{
+    "V": {
+        "A": {
+            "1": {
+                "label": "Attack left lane",
+                "sound": "VOX_VGS_Attack_1.ogg",
+                "completeVGS": "VA1"
+            },
+            "2": {
+                "label": "Attack middle lane",
+                "sound": "VOX_VGS_Attack_2.ogg",
+                "completeVGS": "VA2"
+            },
+            "3": {
+                "label": "Attack right lane",
+                "sound": "VOX_VGS_Attack_3.ogg",
+                "completeVGS": "VA3"
+            },
+            "A": {
+                "label": "Attack",
+                "sound": "VOX_VGS_Attack_A.ogg",
+                "completeVGS": "VAA"
+            },
+            "F": {
+                "label": "Attack Fire Giant",
+                "sound": "VOX_VGS_Attack_F.ogg",
+                "completeVGS": "VAF"
+            },
+            "G": {
+                "label": "Attack the Gold Fury",
+                "sound": "VOX_VGS_Attack_G.ogg",
+                "completeVGS": "VAG"
+            },
+            "M": {
+                "label": "Attack the Titan",
+                "sound": "VOX_VGS_Attack_T.ogg",
+                "completeVGS": "VAM"
+            },
+            "T": {
+                "1": {
+                    "label": "Attack left tower/phoenix",
+                    "sound": "VOX_VGS_Tower_1.ogg",
+                    "completeVGS": "VAT1"
+                },
+                "2": {
+                    "label": "Attack middle tower/phoenix",
+                    "sound": "VOX_VGS_Tower_2.ogg",
+                    "completeVGS": "VAT2"
+                },
+                "3": {
+                    "label": "Attack right tower/phoenix",
+                    "sound": "VOX_VGS_Tower_3.ogg",
+                    "completeVGS": "VAT3"
+                }
+            }
+        },
+        "B": {
+            "1": {
+                "label": "Enemies in left lane",
+                "sound": "VOX_VGS_Enemy_1.ogg",
+                "completeVGS": "VB1"
+            },
+            "2": {
+                "label": "Enemies in middle lane",
+                "sound": "VOX_VGS_Enemy_2.ogg",
+                "completeVGS": "VB2"
+            },
+            "3": {
+                "label": "Enemies in right lane",
+                "sound": "VOX_VGS_Enemy_3.ogg",
+                "completeVGS": "VB3"
+            },
+            "A": {
+                "label": "Enemy ultimate incoming",
+                "sound": "VOX_VGS_Ultimate_Enemy_A.ogg",
+                "completeVGS": "VBA"
+            },
+            "B": {
+                "label": "Enemies have returned to base.",
+                "sound": "VOX_VGS_Enemy_B.ogg",
+                "completeVGS": "VBB"
+            },
+            "D": {
+                "label": "Enemy ultimate down",
+                "sound": "VOX_VGS_Ultimate_Enemy_D.ogg",
+                "completeVGS": "VBD"
+            },
+            "E": {
+                "label": "Enemies behind us",
+                "sound": "VOX_VGS_Enemy_E.ogg",
+                "completeVGS": "VBE"
+            },
+            "F": {
+                "label": "Enemies at the Fire Giant",
+                "sound": "VOX_VGS_Enemy_F.ogg",
+                "completeVGS": "VBF"
+            },
+            "G": {
+                "label": "Enemies at the Gold Fury",
+                "sound": "VOX_VGS_Enemy_G.ogg",
+                "completeVGS": "VBG"
+            },
+            "J": {
+                "1": {
+                    "label": "Enemies in the Left Jungle",
+                    "sound": "VOX_VGS_Enemy_Jungle_1.ogg",
+                    "completeVGS": "VBJ1"
+                },
+                "3": {
+                    "label": "Enemies in the right jungle",
+                    "sound": "VOX_VGS_Enemy_Jungle_2.ogg",
+                    "completeVGS": "VBJ3"
+                },
+                "J": {
+                    "label": "Enemies in the jungle",
+                    "sound": "VOX_VGS_Enemy_J.ogg",
+                    "completeVGS": "VBJJ"
+                }
+            },
+            "M": {
+                "label": "Enemies at our Titan",
+                "sound": "VOX_VGS_Enemy_T.ogg",
+                "completeVGS": "VBM"
+            },
+            "S": {
+                "label": "Enemy spotted",
+                "sound": "VOX_VGS_Enemy_S.ogg",
+                "completeVGS": "VBS"
+            }
+        },
+        "C": {
+            "1": {
+                "label": "Be careful left",
+                "sound": "VOX_VGS_Careful_1.ogg",
+                "completeVGS": "VC1"
+            },
+            "2": {
+                "label": "Be careful middle",
+                "sound": "VOX_VGS_Careful_2.ogg",
+                "completeVGS": "VC2"
+            },
+            "3": {
+                "label": "Be careful right",
+                "sound": "VOX_VGS_Careful_3.ogg",
+                "completeVGS": "VC3"
+            },
+            "B": {
+                "label": "Return to base",
+                "sound": "VOX_VGS_Careful_B.ogg",
+                "completeVGS": "VCB"
+            },
+            "C": {
+                "label": "Be careful",
+                "sound": "VOX_VGS_Careful_C.ogg",
+                "completeVGS": "VCC"
+            },
+            "J": {
+                "label": "Be careful in the jungle",
+                "sound": "VOX_VGS_Careful_J.ogg",
+                "completeVGS": "VCJ"
+            }
+        },
+        "D": {
+            "1": {
+                "label": "Defend left lane",
+                "sound": "VOX_VGS_Defend_1.ogg",
+                "completeVGS": "VD1"
+            },
+            "2": {
+                "label": "Defend middle lane",
+                "sound": "VOX_VGS_Defend_2.ogg",
+                "completeVGS": "VD2"
+            },
+            "3": {
+                "label": "Defend right lane",
+                "sound": "VOX_VGS_Defend_3.ogg",
+                "completeVGS": "VD3"
+            },
+            "D": {
+                "label": "Defend",
+                "sound": "VOX_VGS_Defend_D.ogg",
+                "completeVGS": "VDD"
+            },
+            "F": {
+                "label": "Defend the Fire Giant",
+                "sound": "VOX_VGS_Defend_F.ogg",
+                "completeVGS": "VDF"
+            },
+            "G": {
+                "label": "Defend the Gold Fury",
+                "sound": "VOX_VGS_Defend_G.ogg",
+                "completeVGS": "VDG"
+            },
+            "M": {
+                "label": "Defend the Titan",
+                "sound": "VOX_VGS_Defend_T.ogg",
+                "completeVGS": "VDM"
+            }
+        },
+        "E": {
+            "A": {
+                "label": "Awesome",
+                "sound": "VOX_VGS_Emote_A.ogg",
+                "completeVGS": "VEA"
+            },
+            "G": {
+                "label": "Greatest",
+                "sound": "VOX_VGS_Emote_G.ogg",
+                "completeVGS": "VEG"
+            },
+            "J": {
+                "label": "Joke",
+                "sound": null,
+                "completeVGS": "VEJ"
+            },
+            "L": {
+                "label": "Laugh",
+                "sound": null,
+                "completeVGS": "VEL"
+            },
+            "R": {
+                "label": "You rock",
+                "sound": "VOX_VGS_Emote_R.ogg",
+                "completeVGS": "VER"
+            },
+            "T": {
+                "label": "Taunt",
+                "sound": null,
+                "completeVGS": "VET"
+            },
+            "W": {
+                "label": "Woohoo",
+                "sound": "VOX_VGS_Emote_W.ogg",
+                "completeVGS": "VEW"
+            }
+        },
+        "F": {
+            "1": {
+                "label": "Enemy missing left",
+                "sound": "VOX_VGS_MIA_1.ogg",
+                "completeVGS": "VF1"
+            },
+            "2": {
+                "label": "Enemy missing middle",
+                "sound": "VOX_VGS_MIA_2.ogg",
+                "completeVGS": "VF2"
+            },
+            "3": {
+                "label": "Enemy missing right",
+                "sound": "VOX_VGS_MIA_3.ogg",
+                "completeVGS": "VF3"
+            },
+            "F": {
+                "label": "Enemy missing",
+                "sound": "VOX_VGS_MIA_M.ogg",
+                "completeVGS": "VFF"
+            }
+        },
+        "G": {
+            "1": {
+                "label": "Gank left lane",
+                "sound": "VOX_VGS_Gank_1.ogg",
+                "completeVGS": "VG1"
+            },
+            "2": {
+                "label": "Gank middle lane",
+                "sound": "VOX_VGS_Gank_2.ogg",
+                "completeVGS": "VG2"
+            },
+            "3": {
+                "label": "Gank right lane",
+                "sound": "VOX_VGS_Gank_3.ogg",
+                "completeVGS": "VG3"
+            },
+            "G": {
+                "label": "Gank",
+                "sound": "VOX_VGS_Gank_G.ogg",
+                "completeVGS": "VGG"
+            }
+        },
+        "H": {
+            "1": {
+                "label": "Help left lane",
+                "sound": "VOX_VGS_Help_1.ogg",
+                "completeVGS": "VH1"
+            },
+            "2": {
+                "label": "Help middle lane",
+                "sound": "VOX_VGS_Help_2.ogg",
+                "completeVGS": "VH2"
+            },
+            "3": {
+                "label": "Help right lane",
+                "sound": "VOX_VGS_Help_3.ogg",
+                "completeVGS": "VH3"
+            },
+            "H": {
+                "label": "Help",
+                "sound": "VOX_VGS_Help.ogg",
+                "completeVGS": "VHH"
+            },
+            "S": {
+                "label": "Need Healing",
+                "sound": "VOX_VGS_Help_S.ogg",
+                "completeVGS": "VHS"
+            }
+        },
+        "I": {
+            "1": {
+                "label": "Enemies incoming left",
+                "sound": "VOX_VGS_Incoming_1.ogg",
+                "completeVGS": "VI1"
+            },
+            "2": {
+                "label": "Enemies incoming middle",
+                "sound": "VOX_VGS_Incoming_2.ogg",
+                "completeVGS": "VI2"
+            },
+            "3": {
+                "label": "Enemies incoming right",
+                "sound": "VOX_VGS_Incoming_3.ogg",
+                "completeVGS": "VI3"
+            },
+            "I": {
+                "label": "Enemies incoming",
+                "sound": "VOX_VGS_Incoming_I.ogg",
+                "completeVGS": "VII"
+            }
+        },
+        "Q": {
+            "1": {
+                "label": "Ward Left",
+                "sound": "VOX_VGS_Ward_1.ogg",
+                "completeVGS": "VQ1"
+            },
+            "2": {
+                "label": "Ward middle",
+                "sound": "VOX_VGS_Ward_2.ogg",
+                "completeVGS": "VQ2"
+            },
+            "3": {
+                "label": "Ward Right",
+                "sound": "VOX_VGS_Ward_3.ogg",
+                "completeVGS": "VQ3"
+            },
+            "F": {
+                "label": "Ward Fire Giant",
+                "sound": "VOX_VGS_Ward_F.ogg",
+                "completeVGS": "VQF"
+            },
+            "G": {
+                "label": "Ward Gold Fury",
+                "sound": "VOX_VGS_Ward_G.ogg",
+                "completeVGS": "VQG"
+            },
+            "N": {
+                "label": "Need Wards",
+                "sound": "VOX_VGS_Ward_N.ogg",
+                "completeVGS": "VQN"
+            },
+            "Q": {
+                "label": "Ward Here",
+                "sound": "VOX_VGS_Ward.ogg",
+                "completeVGS": "VQQ"
+            }
+        },
+        "R": {
+            "1": {
+                "label": "Retreat left lane",
+                "sound": "VOX_VGS_Retreat_1.ogg",
+                "completeVGS": "VR1"
+            },
+            "2": {
+                "label": "Retreat middle lane",
+                "sound": "VOX_VGS_Retreat_2.ogg",
+                "completeVGS": "VR2"
+            },
+            "3": {
+                "label": "Retreat right lane",
+                "sound": "VOX_VGS_Retreat_3.ogg",
+                "completeVGS": "VR3"
+            },
+            "J": {
+                "label": "Retreat from the Jungle",
+                "sound": "VOX_VGS_Retreat_J.ogg",
+                "completeVGS": "VRJ"
+            },
+            "R": {
+                "label": "Retreat",
+                "sound": "VOX_VGS_Retreat_R.ogg",
+                "completeVGS": "VRR"
+            },
+            "S": {
+                "label": "Save yourself",
+                "sound": "VOX_VGS_Retreat_S.ogg",
+                "completeVGS": "VRS"
+            }
+        },
+        "S": {
+            "A": {
+                "1": {
+                    "label": "I'll Attack left lane",
+                    "sound": "VOX_VGS_Self_Attack_1.ogg",
+                    "completeVGS": "VSA1"
+                },
+                "2": {
+                    "label": "I'll Attack middle lane",
+                    "sound": "VOX_VGS_Self_Attack_2.ogg",
+                    "completeVGS": "VSA2"
+                },
+                "3": {
+                    "label": "I'll Attack right lane",
+                    "sound": "VOX_VGS_Self_Attack_3.ogg",
+                    "completeVGS": "VSA3"
+                },
+                "A": {
+                    "label": "I'll Attack",
+                    "sound": "VOX_VGS_Self_Attack.ogg",
+                    "completeVGS": "VSAA"
+                },
+                "F": {
+                    "label": "I'll Attack Fire Giant",
+                    "sound": "VOX_VGS_Self_Attack_F.ogg",
+                    "completeVGS": "VSAF"
+                },
+                "G": {
+                    "label": "I'll Attack the Gold Fury",
+                    "sound": "VOX_VGS_Self_Attack_G.ogg",
+                    "completeVGS": "VSAG"
+                },
+                "M": {
+                    "label": "I'll Attack the Titan",
+                    "sound": "VOX_VGS_Self_Attack_T.ogg",
+                    "completeVGS": "VSAM"
+                }
+            },
+            "B": {
+                "B": {
+                    "label": "I'm going for jungle buff",
+                    "sound": "VOX_VGS_Self_B.ogg",
+                    "completeVGS": "VSBB"
+                },
+                "N": {
+                    "label": "I need the jungle buff.",
+                    "sound": "VOX_VGS_Jungle_Buff_N.ogg",
+                    "completeVGS": "VSBN"
+                },
+                "T": {
+                    "label": "Take this jungle buff.",
+                    "sound": "VOX_VGS_Jungle_Buff_C.ogg",
+                    "completeVGS": "VSBT"
+                }
+            },
+            "D": {
+                "1": {
+                    "label": "I'll defend left lane",
+                    "sound": "VOX_VGS_Self_Defend_1.ogg",
+                    "completeVGS": "VSD1"
+                },
+                "2": {
+                    "label": "I'll defend middle lane",
+                    "sound": "VOX_VGS_Self_Defend_2.ogg",
+                    "completeVGS": "VSD2"
+                },
+                "3": {
+                    "label": "I'll defend right lane",
+                    "sound": "VOX_VGS_Self_Defend_3.ogg",
+                    "completeVGS": "VSD3"
+                },
+                "D": {
+                    "label": "I'll defend",
+                    "sound": "VOX_VGS_Self_Defend.ogg",
+                    "completeVGS": "VSDD"
+                },
+                "F": {
+                    "label": "I'll defend the Fire Giant",
+                    "sound": "VOX_VGS_Self_Defend_F.ogg",
+                    "completeVGS": "VSDF"
+                },
+                "G": {
+                    "label": "I'll defend the Gold Fury",
+                    "sound": "VOX_VGS_Self_Defend_G.ogg",
+                    "completeVGS": "VSDG"
+                },
+                "M": {
+                    "label": "I'll defend the Titan",
+                    "sound": "VOX_VGS_Self_Defend_T.ogg",
+                    "completeVGS": "VSDM"
+                }
+            },
+            "G": {
+                "1": {
+                    "label": "I'll gank left lane",
+                    "sound": "VOX_VGS_Self_Gank_1.ogg",
+                    "completeVGS": "VSG1"
+                },
+                "2": {
+                    "label": "I'll gank middle lane",
+                    "sound": "VOX_VGS_Self_Gank_2.ogg",
+                    "completeVGS": "VSG2"
+                },
+                "3": {
+                    "label": "I'll gank right lane",
+                    "sound": "VOX_VGS_Self_Gank_3.ogg",
+                    "completeVGS": "VSG3"
+                },
+                "G": {
+                    "label": "I'll gank",
+                    "sound": "VOX_VGS_Self_Gank.ogg",
+                    "completeVGS": "VSGG"
+                }
+            },
+            "O": {
+                "label": "I'm on it",
+                "sound": "VOX_VGS_Self_O.ogg",
+                "completeVGS": "VSO"
+            },
+            "Q": {
+                "1": {
+                    "label": "I will ward left",
+                    "sound": "VOX_VGS_Self_Ward_1.ogg",
+                    "completeVGS": "VSQ1"
+                },
+                "2": {
+                    "label": "I will ward middle",
+                    "sound": "VOX_VGS_Self_Ward_2.ogg",
+                    "completeVGS": "VSQ2"
+                },
+                "3": {
+                    "label": "I will ward right",
+                    "sound": "VOX_VGS_Self_Ward_3.ogg",
+                    "completeVGS": "VSQ3"
+                },
+                "Q": {
+                    "label": "I will ward",
+                    "sound": "VOX_VGS_Self_Ward.ogg",
+                    "completeVGS": "VSQQ"
+                }
+            },
+            "R": {
+                "label": "Falling back",
+                "sound": "VOX_VGS_Self_R.ogg",
+                "completeVGS": "VSR"
+            },
+            "S": {
+                "label": "I'm building Stacks",
+                "sound": "VOX_VGS_Self_Stacks.ogg",
+                "completeVGS": "VSS"
+            },
+            "T": {
+                "1": {
+                    "label": "I'm returning left lane",
+                    "sound": "VOX_VGS_Self_Returned_1.ogg",
+                    "completeVGS": "VST1"
+                },
+                "2": {
+                    "label": "I'm returning middle lane",
+                    "sound": "VOX_VGS_Self_Returned_2.ogg",
+                    "completeVGS": "VST2"
+                },
+                "3": {
+                    "label": "I'm returning right lane",
+                    "sound": "VOX_VGS_Self_Returned_3.ogg",
+                    "completeVGS": "VST3"
+                },
+                "B": {
+                    "label": "I'm returning to base",
+                    "sound": "VOX_VGS_Self_Returned_B.ogg",
+                    "completeVGS": "VSTB"
+                },
+                "T": {
+                    "label": "I have returned",
+                    "sound": "VOX_VGS_Self_Returned.ogg",
+                    "completeVGS": "VSTT"
+                }
+            }
+        },
+        "T": {
+            "1": {
+                "label": "Enemies have returned left",
+                "sound": "VOX_VGS_Returned_1.ogg",
+                "completeVGS": "VT1"
+            },
+            "2": {
+                "label": "Enemies have returned middle",
+                "sound": "VOX_VGS_Returned_2.ogg",
+                "completeVGS": "VT2"
+            },
+            "3": {
+                "label": "Enemies have returned right",
+                "sound": "VOX_VGS_Returned_3.ogg",
+                "completeVGS": "VT3"
+            },
+            "T": {
+                "label": "Enemies have returned",
+                "sound": "VOX_VGS_Returned_E.ogg",
+                "completeVGS": "VTT"
+            }
+        },
+        "V": {
+            "A": {
+                "label": "Ok",
+                "sound": "VOX_VGS_OK.ogg",
+                "completeVGS": "VVA"
+            },
+            "B": {
+                "label": "Be right back",
+                "sound": "VOX_VGS_BRB.ogg",
+                "completeVGS": "VVB"
+            },
+            "C": {
+                "label": "Completed",
+                "sound": "VOX_VGS_Completed.ogg",
+                "completeVGS": "VVC"
+            },
+            "G": {
+                "B": {
+                    "label": "Bye",
+                    "sound": "VOX_VGS_Other_G_B.ogg",
+                    "completeVGS": "VVGB"
+                },
+                "F": {
+                    "label": "Have fun",
+                    "sound": "VOX_VGS_Emote_F.ogg",
+                    "completeVGS": "VVGF"
+                },
+                "G": {
+                    "label": "Good game",
+                    "sound": "VOX_VGS_Other_G_G.ogg",
+                    "completeVGS": "VVGG"
+                },
+                "H": {
+                    "label": "Hi",
+                    "sound": "VOX_VGS_Other_G_H.ogg",
+                    "completeVGS": "VVGH"
+                },
+                "L": {
+                    "label": "Good luck",
+                    "sound": "VOX_VGS_Other_G_L.ogg",
+                    "completeVGS": "VVGL"
+                },
+                "N": {
+                    "label": "Nice Job",
+                    "sound": "VOX_VGS_NiceJob.ogg",
+                    "completeVGS": "VVGN"
+                },
+                "O": {
+                    "label": "Oops",
+                    "sound": "VOX_VGS_Other_G_O.ogg",
+                    "completeVGS": "VVGO"
+                },
+                "Q": {
+                    "label": "Quiet",
+                    "sound": "VOX_VGS_Other_G_Q.ogg",
+                    "completeVGS": "VVGQ"
+                },
+                "R": {
+                    "label": "No Problem",
+                    "sound": "VOX_VGS_Other_G_R.ogg",
+                    "completeVGS": "VVGR"
+                },
+                "S": {
+                    "label": "Curses",
+                    "sound": "VOX_VGS_Other_G_S.ogg",
+                    "completeVGS": "VVGS"
+                },
+                "T": {
+                    "label": "That's too bad",
+                    "sound": "VOX_VGS_Other_G_T.ogg",
+                    "completeVGS": "VVGT"
+                },
+                "W": {
+                    "label": "You're welcome",
+                    "sound": "VOX_VGS_Other_G_W.ogg",
+                    "completeVGS": "VVGW"
+                }
+            },
+            "K": {
+                "label": "Stepping away for a moment.",
+                "sound": "VOX_VGS_AFK.ogg",
+                "completeVGS": "VVK"
+            },
+            "M": {
+                "label": "Out of mana",
+                "sound": "VOX_VGS_Other_G_M.ogg",
+                "completeVGS": "VVM"
+            },
+            "N": {
+                "label": "No",
+                "sound": "VOX_VGS_Emote_No.ogg",
+                "completeVGS": "VVN"
+            },
+            "P": {
+                "label": "Please?",
+                "sound": "VOX_VGS_Emote_Please.ogg",
+                "completeVGS": "VVP"
+            },
+            "S": {
+                "label": "Sorry",
+                "sound": "VOX_VGS_Other_S.ogg",
+                "completeVGS": "VVS"
+            },
+            "T": {
+                "label": "Thanks",
+                "sound": "VOX_VGS_Thanks.ogg",
+                "completeVGS": "VVT"
+            },
+            "V": {
+                "A": {
+                    "label": "Set up an ambush here",
+                    "sound": "VOX_VGS_Other_V_A.ogg",
+                    "completeVGS": "VVVA"
+                },
+                "B": {
+                    "label": "Behind us",
+                    "sound": "VOX_VGS_Other_V_B.ogg",
+                    "completeVGS": "VVVB"
+                },
+                "C": {
+                    "label": "Chase the enemy",
+                    "sound": "VOX_VGS_Other_V_C.ogg",
+                    "completeVGS": "VVVC"
+                },
+                "D": {
+                    "label": "Ultimate is down",
+                    "sound": "VOX_VGS_Other_V_D.ogg",
+                    "completeVGS": "VVVD"
+                },
+                "E": {
+                    "label": "On my way",
+                    "sound": "VOX_VGS_Other_V_W.ogg",
+                    "completeVGS": "VVVE"
+                },
+                "F": {
+                    "label": "Follow me",
+                    "sound": "VOX_VGS_Other_V_F.ogg",
+                    "completeVGS": "VVVF"
+                },
+                "G": {
+                    "label": "Group up",
+                    "sound": "VOX_VGS_Other_V_G.ogg",
+                    "completeVGS": "VVVG"
+                },
+                "J": {
+                    "label": "Going into the jungle",
+                    "sound": "VOX_VGS_Other_V_J.ogg",
+                    "completeVGS": "VVVJ"
+                },
+                "P": {
+                    "label": "Split push",
+                    "sound": "VOX_VGS_Other_V_P.ogg",
+                    "completeVGS": "VVVP"
+                },
+                "R": {
+                    "label": "Ultimate is ready",
+                    "sound": "VOX_VGS_Other_V_R.ogg",
+                    "completeVGS": "VVVR"
+                },
+                "S": {
+                    "label": "Stay here",
+                    "sound": "VOX_VGS_Other_V_S.ogg",
+                    "completeVGS": "VVVS"
+                },
+                "T": {
+                    "label": "It's a trap",
+                    "sound": "VOX_VGS_Other_V_T.ogg",
+                    "completeVGS": "VVVT"
+                },
+                "W": {
+                    "label": "Place a Ward for teleport",
+                    "sound": "VOX_VGS_Ward_T.ogg",
+                    "completeVGS": "VVVW"
+                },
+                "X": {
+                    "label": "Spread Out",
+                    "sound": "VOX_VGS_Other_V_X.ogg",
+                    "completeVGS": "VVVX"
+                }
+            },
+            "W": {
+                "label": "Wait",
+                "sound": "VOX_VGS_Other_W.ogg",
+                "completeVGS": "VVW"
+            },
+            "X": {
+                "label": "Cancel that",
+                "sound": "VOX_VGS_Cancel.ogg",
+                "completeVGS": "VVX"
+            },
+            "Y": {
+                "label": "Yes",
+                "sound": "VOX_VGS_Emote_Yes.ogg",
+                "completeVGS": "VVY"
+            }
+        },
+        "X": {
+            "W": {
+                "label": "W - Wave",
+                "sound": null,
+                "completeVGS": "VXW"
+            },
+            "D": {
+                "label": "D - Dance",
+                "sound": null,
+                "completeVGS": "VXD"
+            },
+            "C": {
+                "label": "C - Clap",
+                "sound": null,
+                "completeVGS": "VXC"
+            },
+            "S": {
+                "label": "S - Special",
+                "sound": null,
+                "completeVGS": "VXS"
+            },
+            "F": {
+                "label": "F - Furious",
+                "sound": null,
+                "completeVGS": "VXF"
+            },
+            "G": {
+                "label": "G - Special 2",
+                "sound": null,
+                "completeVGS": "VXG"
+            },
+            "E": {
+                "label": "E - Global Emote",
+                "sound": null,
+                "completeVGS": "VXE"
+            }
+        }
+    }
+}

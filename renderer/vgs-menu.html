@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VGS Menu</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: transparent;
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #vgs-menu {
+      background: rgba(13, 15, 20, 0.92);
+      border: 1px solid rgba(91, 138, 255, 0.3);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      pointer-events: none;
+      min-width: 200px;
+    }
+
+    #vgs-menu.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 6px;
+      border-radius: 6px;
+    }
+
+    .option + .option {
+      margin-top: 2px;
+    }
+
+    .option-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 26px;
+      padding: 0 6px;
+      background: rgba(91, 138, 255, 0.15);
+      border: 1px solid rgba(91, 138, 255, 0.35);
+      border-radius: 5px;
+      color: #7aa2ff;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      flex-shrink: 0;
+    }
+
+    .option-label {
+      color: #c8ccd4;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+</head>
+<body>
+  <div id="vgs-menu"></div>
+  <script>
+    const menu = document.getElementById('vgs-menu');
+
+    window.vgsAPI.onShowVgsOptions((options) => {
+      menu.innerHTML = '';
+      for (const opt of options) {
+        const row = document.createElement('div');
+        row.className = 'option';
+        row.innerHTML = `<span class="option-key">${esc(opt.display)}</span><span class="option-label">${esc(opt.label)}</span>`;
+        menu.appendChild(row);
+      }
+      menu.classList.add('visible');
+    });
+
+    window.vgsAPI.onHideVgsOptions(() => {
+      menu.classList.remove('visible');
+    });
+
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+  </script>
+</body>
+</html>

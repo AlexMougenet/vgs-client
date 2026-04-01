@@ -1,0 +1,678 @@
+{
+    "V": {
+        "A": {
+            "1": {
+                "label": "\"Attack left lane\"",
+                "completeVGS": "VA1"
+            },
+            "2": {
+                "label": "\"Attack middle lane\"",
+                "completeVGS": "VA2"
+            },
+            "3": {
+                "label": "\"Attack right lane\"",
+                "completeVGS": "VA3"
+            },
+            "A": {
+                "label": "\"Attack\"",
+                "completeVGS": "VAA"
+            },
+            "F": {
+                "label": "\"Attack Fire Giant\"",
+                "completeVGS": "VAF"
+            },
+            "G": {
+                "label": "\"Attack the Gold Fury\"",
+                "completeVGS": "VAG"
+            },
+            "M": {
+                "label": "\"Attack the Titan\"",
+                "completeVGS": "VAM"
+            },
+            "T": {
+                "1": {
+                    "label": "Attack left tower/phoenix",
+                    "completeVGS": "VAT1"
+                },
+                "2": {
+                    "label": "Attack middle tower/phoenix",
+                    "completeVGS": "VAT2"
+                },
+                "3": {
+                    "label": "Attack right tower/phoenix",
+                    "completeVGS": "VAT3"
+                }
+            }
+        },
+        "B": {
+            "1": {
+                "label": "\"Enemies in left lane\"",
+                "completeVGS": "VB1"
+            },
+            "2": {
+                "label": "\"Enemies in middle lane\"",
+                "completeVGS": "VB2"
+            },
+            "3": {
+                "label": "\"Enemies in right lane\"",
+                "completeVGS": "VB3"
+            },
+            "A": {
+                "label": "\"Enemy ultimate incoming\"",
+                "completeVGS": "VBA"
+            },
+            "B": {
+                "label": "\"Enemies have returned to base.\"",
+                "completeVGS": "VBB"
+            },
+            "D": {
+                "label": "\"Enemy ultimate down\"",
+                "completeVGS": "VBD"
+            },
+            "E": {
+                "label": "\"Enemies behind us\"",
+                "completeVGS": "VBE"
+            },
+            "F": {
+                "label": "\"Enemies at the Fire Giant\"",
+                "completeVGS": "VBF"
+            },
+            "G": {
+                "label": "\"Enemies at the Gold Fury\"",
+                "completeVGS": "VBG"
+            },
+            "J": {
+                "1": {
+                    "label": "\"Enemies in the Left Jungle\"",
+                    "completeVGS": "VBJ1"
+                },
+                "3": {
+                    "label": "\"Enemies in the right jungle\"",
+                    "completeVGS": "VBJ3"
+                },
+                "J": {
+                    "label": "\"Enemies in the jungle\"",
+                    "completeVGS": "VBJJ"
+                }
+            },
+            "M": {
+                "label": "\"Enemies at our Titan\"",
+                "completeVGS": "VBM"
+            },
+            "S": {
+                "label": "\"Enemy spotted\"",
+                "completeVGS": "VBS"
+            }
+        },
+        "C": {
+            "1": {
+                "label": "\"Be careful left\"",
+                "completeVGS": "VC1"
+            },
+            "2": {
+                "label": "\"Be careful middle\"",
+                "completeVGS": "VC2"
+            },
+            "3": {
+                "label": "\"Be careful right\"",
+                "completeVGS": "VC3"
+            },
+            "B": {
+                "label": "\"Return to base\"",
+                "completeVGS": "VCB"
+            },
+            "C": {
+                "label": "\"Be careful\"",
+                "completeVGS": "VCC"
+            },
+            "J": {
+                "label": "\"Be careful in the jungle\"",
+                "completeVGS": "VCJ"
+            }
+        },
+        "D": {
+            "1": {
+                "label": "\"Defend left lane\"",
+                "completeVGS": "VD1"
+            },
+            "2": {
+                "label": "\"Defend middle lane\"",
+                "completeVGS": "VD2"
+            },
+            "3": {
+                "label": "\"Defend right lane\"",
+                "completeVGS": "VD3"
+            },
+            "D": {
+                "label": "\"Defend\"",
+                "completeVGS": "VDD"
+            },
+            "F": {
+                "label": "\"Defend the Fire Giant\"",
+                "completeVGS": "VDF"
+            },
+            "G": {
+                "label": "\"Defend the Gold Fury\"",
+                "completeVGS": "VDG"
+            },
+            "M": {
+                "label": "\"Defend the Titan\"",
+                "completeVGS": "VDM"
+            }
+        },
+        "E": {
+            "A": {
+                "label": "Awesome",
+                "completeVGS": "VEA"
+            },
+            "G": {
+                "label": "Greatest",
+                "completeVGS": "VEG"
+            },
+            "J": {
+                "label": "Joke",
+                "completeVGS": "VEJ"
+            },
+            "L": {
+                "label": "Laugh",
+                "completeVGS": "VEL"
+            },
+            "R": {
+                "label": "You rock",
+                "completeVGS": "VER"
+            },
+            "T": {
+                "label": "Taunt",
+                "completeVGS": "VET"
+            },
+            "W": {
+                "label": "Woohoo",
+                "completeVGS": "VEW"
+            }
+        },
+        "F": {
+            "1": {
+                "label": "\"Enemy missing left\"",
+                "completeVGS": "VF1"
+            },
+            "2": {
+                "label": "\"Enemy missing middle\"",
+                "completeVGS": "VF2"
+            },
+            "3": {
+                "label": "\"Enemy missing right\"",
+                "completeVGS": "VF3"
+            },
+            "F": {
+                "label": "\"Enemy missing\"",
+                "completeVGS": "VFF"
+            }
+        },
+        "G": {
+            "1": {
+                "label": "\"Gank left lane\"",
+                "completeVGS": "VG1"
+            },
+            "2": {
+                "label": "\"Gank middle lane\"",
+                "completeVGS": "VG2"
+            },
+            "3": {
+                "label": "\"Gank right lane\"",
+                "completeVGS": "VG3"
+            },
+            "G": {
+                "label": "\"Gank\"",
+                "completeVGS": "VGG"
+            }
+        },
+        "H": {
+            "1": {
+                "label": "\"Help left lane\"",
+                "completeVGS": "VH1"
+            },
+            "2": {
+                "label": "\"Help middle lane\"",
+                "completeVGS": "VH2"
+            },
+            "3": {
+                "label": "\"Help right lane\"",
+                "completeVGS": "VH3"
+            },
+            "H": {
+                "label": "\"Help\"",
+                "completeVGS": "VHH"
+            },
+            "S": {
+                "label": "\"Need Healing\"",
+                "completeVGS": "VHS"
+            }
+        },
+        "I": {
+            "1": {
+                "label": "\"Enemies incoming left\"",
+                "completeVGS": "VI1"
+            },
+            "2": {
+                "label": "\"Enemies incoming middle\"",
+                "completeVGS": "VI2"
+            },
+            "3": {
+                "label": "\"Enemies incoming right\"",
+                "completeVGS": "VI3"
+            },
+            "I": {
+                "label": "\"Enemies incoming\"",
+                "completeVGS": "VII"
+            }
+        },
+        "Q": {
+            "1": {
+                "label": "\"Ward Left\"",
+                "completeVGS": "VQ1"
+            },
+            "2": {
+                "label": "\"Ward middle\"",
+                "completeVGS": "VQ2"
+            },
+            "3": {
+                "label": "\"Ward Right\"",
+                "completeVGS": "VQ3"
+            },
+            "F": {
+                "label": "\"Ward Fire Giant\"",
+                "completeVGS": "VQF"
+            },
+            "G": {
+                "label": "\"Ward Gold Fury\"",
+                "completeVGS": "VQG"
+            },
+            "N": {
+                "label": "\"Need Wards\"",
+                "completeVGS": "VQN"
+            },
+            "Q": {
+                "label": "\"Ward Here\"",
+                "completeVGS": "VQQ"
+            }
+        },
+        "R": {
+            "1": {
+                "label": "\"Retreat left lane\"",
+                "completeVGS": "VR1"
+            },
+            "2": {
+                "label": "\"Retreat middle lane\"",
+                "completeVGS": "VR2"
+            },
+            "3": {
+                "label": "\"Retreat right lane\"",
+                "completeVGS": "VR3"
+            },
+            "J": {
+                "label": "\"Retreat from the Jungle\"",
+                "completeVGS": "VRJ"
+            },
+            "R": {
+                "label": "\"Retreat\"",
+                "completeVGS": "VRR"
+            },
+            "S": {
+                "label": "\"Save yourself\"",
+                "completeVGS": "VRS"
+            }
+        },
+        "S": {
+            "A": {
+                "1": {
+                    "label": "\"I'll Attack left lane\"",
+                    "completeVGS": "VSA1"
+                },
+                "2": {
+                    "label": "\"I'll Attack middle lane\"",
+                    "completeVGS": "VSA2"
+                },
+                "3": {
+                    "label": "\"I'll Attack right lane\"",
+                    "completeVGS": "VSA3"
+                },
+                "A": {
+                    "label": "\"I'll Attack\"",
+                    "completeVGS": "VSAA"
+                },
+                "F": {
+                    "label": "\"I'll Attack Fire Giant\"",
+                    "completeVGS": "VSAF"
+                },
+                "G": {
+                    "label": "\"I'll Attack the Gold Fury\"",
+                    "completeVGS": "VSAG"
+                },
+                "M": {
+                    "label": "\"I'll Attack the Titan\"",
+                    "completeVGS": "VSAM"
+                }
+            },
+            "B": {
+                "B": {
+                    "label": "\"I'm going for jungle buff\"",
+                    "completeVGS": "VSBB"
+                },
+                "N": {
+                    "label": "\"I need the jungle buff.\"",
+                    "completeVGS": "VSBN"
+                },
+                "T": {
+                    "label": "\"Take this jungle buff.\"",
+                    "completeVGS": "VSBT"
+                }
+            },
+            "D": {
+                "1": {
+                    "label": "\"I'll defend left lane\"",
+                    "completeVGS": "VSD1"
+                },
+                "2": {
+                    "label": "\"I'll defend middle lane\"",
+                    "completeVGS": "VSD2"
+                },
+                "3": {
+                    "label": "\"I'll defend right lane\"",
+                    "completeVGS": "VSD3"
+                },
+                "D": {
+                    "label": "\"I'll defend\"",
+                    "completeVGS": "VSDD"
+                },
+                "F": {
+                    "label": "\"I'll defend the Fire Giant\"",
+                    "completeVGS": "VSDF"
+                },
+                "G": {
+                    "label": "\"I'll defend the Gold Fury\"",
+                    "completeVGS": "VSDG"
+                },
+                "M": {
+                    "label": "\"I'll defend the Titan\"",
+                    "completeVGS": "VSDM"
+                }
+            },
+            "G": {
+                "1": {
+                    "label": "\"I'll gank left lane\"",
+                    "completeVGS": "VSG1"
+                },
+                "2": {
+                    "label": "\"I'll gank middle lane\"",
+                    "completeVGS": "VSG2"
+                },
+                "3": {
+                    "label": "\"I'll gank right lane\"",
+                    "completeVGS": "VSG3"
+                },
+                "G": {
+                    "label": "\"I'll gank\"",
+                    "completeVGS": "VSGG"
+                }
+            },
+            "O": {
+                "label": "\"I'm on it\"",
+                "completeVGS": "VSO"
+            },
+            "Q": {
+                "1": {
+                    "label": "\"I will ward left\"",
+                    "completeVGS": "VSQ1"
+                },
+                "2": {
+                    "label": "\"I will ward middle\"",
+                    "completeVGS": "VSQ2"
+                },
+                "3": {
+                    "label": "\"I will ward right\"",
+                    "completeVGS": "VSQ3"
+                },
+                "Q": {
+                    "label": "\"I will ward\"",
+                    "completeVGS": "VSQQ"
+                }
+            },
+            "R": {
+                "label": "\"Falling back\"",
+                "completeVGS": "VSR"
+            },
+            "S": {
+                "label": "\"I'm building Stacks\"",
+                "completeVGS": "VSS"
+            },
+            "T": {
+                "1": {
+                    "label": "\"I'm returning left lane\"",
+                    "completeVGS": "VST1"
+                },
+                "2": {
+                    "label": "\"I'm returning middle lane\"",
+                    "completeVGS": "VST2"
+                },
+                "3": {
+                    "label": "\"I'm returning right lane\"",
+                    "completeVGS": "VST3"
+                },
+                "B": {
+                    "label": "\"I'm returning to base\"",
+                    "completeVGS": "VSTB"
+                },
+                "T": {
+                    "label": "\"I have returned\"",
+                    "completeVGS": "VSTT"
+                }
+            }
+        },
+        "T": {
+            "1": {
+                "label": "\"Enemies have returned left\"",
+                "completeVGS": "VT1"
+            },
+            "2": {
+                "label": "\"Enemies have returned middle\"",
+                "completeVGS": "VT2"
+            },
+            "3": {
+                "label": "\"Enemies have returned right\"",
+                "completeVGS": "VT3"
+            },
+            "T": {
+                "label": "\"Enemies have returned\"",
+                "completeVGS": "VTT"
+            }
+        },
+        "V": {
+            "A": {
+                "label": "\"Ok\"",
+                "completeVGS": "VVA"
+            },
+            "B": {
+                "label": "\"Be right back\"",
+                "completeVGS": "VVB"
+            },
+            "C": {
+                "label": "\"Completed\"",
+                "completeVGS": "VVC"
+            },
+            "G": {
+                "B": {
+                    "label": "\"Bye\"",
+                    "completeVGS": "VVGB"
+                },
+                "F": {
+                    "label": "\"Have fun\"",
+                    "completeVGS": "VVGF"
+                },
+                "G": {
+                    "label": "\"Good game\"",
+                    "completeVGS": "VVGG"
+                },
+                "H": {
+                    "label": "\"Hi\"",
+                    "completeVGS": "VVGH"
+                },
+                "L": {
+                    "label": "\"Good luck\"",
+                    "completeVGS": "VVGL"
+                },
+                "N": {
+                    "label": "\"Nice Job\"",
+                    "completeVGS": "VVGN"
+                },
+                "O": {
+                    "label": "\"Oops\"",
+                    "completeVGS": "VVGO"
+                },
+                "Q": {
+                    "label": "\"Quiet\"",
+                    "completeVGS": "VVGQ"
+                },
+                "R": {
+                    "label": "\"No Problem\"",
+                    "completeVGS": "VVGR"
+                },
+                "S": {
+                    "label": "\"Curses\"",
+                    "completeVGS": "VVGS"
+                },
+                "T": {
+                    "label": "\"That's too bad\"",
+                    "completeVGS": "VVGT"
+                },
+                "W": {
+                    "label": "\"You're welcome\"",
+                    "completeVGS": "VVGW"
+                }
+            },
+            "K": {
+                "label": "\"Stepping away for a moment.\"",
+                "completeVGS": "VVK"
+            },
+            "M": {
+                "label": "\"Out of mana\"",
+                "completeVGS": "VVM"
+            },
+            "N": {
+                "label": "\"No\"",
+                "completeVGS": "VVN"
+            },
+            "P": {
+                "label": "\"Please?\"",
+                "completeVGS": "VVP"
+            },
+            "S": {
+                "label": "\"Sorry\"",
+                "completeVGS": "VVS"
+            },
+            "T": {
+                "label": "\"Thanks\"",
+                "completeVGS": "VVT"
+            },
+            "V": {
+                "A": {
+                    "label": "\"Set up an ambush here\"",
+                    "completeVGS": "VVVA"
+                },
+                "B": {
+                    "label": "\"Behind us\"",
+                    "completeVGS": "VVVB"
+                },
+                "C": {
+                    "label": "\"Chase the enemy\"",
+                    "completeVGS": "VVVC"
+                },
+                "D": {
+                    "label": "\"Ultimate is down\"",
+                    "completeVGS": "VVVD"
+                },
+                "E": {
+                    "label": "\"On my way\"",
+                    "completeVGS": "VVVE"
+                },
+                "F": {
+                    "label": "\"Follow me\"",
+                    "completeVGS": "VVVF"
+                },
+                "G": {
+                    "label": "\"Group up\"",
+                    "completeVGS": "VVVG"
+                },
+                "J": {
+                    "label": "\"Going into the jungle\"",
+                    "completeVGS": "VVVJ"
+                },
+                "P": {
+                    "label": "\"Split push\"",
+                    "completeVGS": "VVVP"
+                },
+                "R": {
+                    "label": "\"Ultimate is ready\"",
+                    "completeVGS": "VVVR"
+                },
+                "S": {
+                    "label": "\"Stay here\"",
+                    "completeVGS": "VVVS"
+                },
+                "T": {
+                    "label": "\"It's a trap\"",
+                    "completeVGS": "VVVT"
+                },
+                "W": {
+                    "label": "\"Place a Ward for teleport\"",
+                    "completeVGS": "VVVW"
+                },
+                "X": {
+                    "label": "\"Spread Out\"",
+                    "completeVGS": "VVVX"
+                }
+            },
+            "W": {
+                "label": "\"Wait\"",
+                "completeVGS": "VVW"
+            },
+            "X": {
+                "label": "\"Cancel that\"",
+                "completeVGS": "VVX"
+            },
+            "Y": {
+                "label": "\"Yes\"",
+                "completeVGS": "VVY"
+            }
+        },
+        "X": {
+            "W": {
+                "label": "W - Wave",
+                "completeVGS": "VXW"
+            },
+            "D": {
+                "label": "D - Dance",
+                "completeVGS": "VXD"
+            },
+            "C": {
+                "label": "C - Clap",
+                "completeVGS": "VXC"
+            },
+            "S": {
+                "label": "S - Special",
+                "completeVGS": "VXS"
+            },
+            "F": {
+                "label": "F - Furious",
+                "completeVGS": "VXF"
+            },
+            "G": {
+                "label": "G - Special 2",
+                "completeVGS": "VXG"
+            },
+            "E": {
+                "label": "E - Global Emote",
+                "completeVGS": "VXE"
+            }
+        }
+    }
+}

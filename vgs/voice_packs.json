@@ -1,0 +1,25 @@
+[
+  {
+    "id": "default",
+    "name": "Default",
+    "description": "Built-in VGS voice (uses local sound files)",
+    "artwork": null,
+    "sounds": {}
+  },
+  {
+    "id": "ModernAndroidAchilles",
+    "name": "Modern Android Achilles",
+    "description": "You're gonna win this one. Trust me, I'm from the future.",
+    "artwork": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/5e/T_Achilles_ModernAndroid_Card.png",
+    "sounds": {
+      "VAA": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a9/ModernAndroidAchilles_vox_vgs_attack_a.ogg",
+      "VVW": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0e/ModernAndroidAchilles_vox_vgs_other_w.ogg",
+      "VER": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/82/ModernAndroidAchilles_vox_vgs_emote_r.ogg",
+      "VBE": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e5/ModernAndroidAchilles_vox_vgs_enemy_e.ogg",
+      "VVGN": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e3/ModernAndroidAchilles_vox_vgs_nicejob.ogg",
+      "VEA": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/aa/ModernAndroidAchilles_vox_vgs_emote_a.ogg",
+      "VEW": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c9/ModernAndroidAchilles_vox_vgs_emote_w.ogg",
+      "VCC": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/ca/ModernAndroidAchilles_vox_vgs_careful_c.ogg"
+    }
+  }
+]

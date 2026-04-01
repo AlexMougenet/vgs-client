@@ -27,6 +27,7 @@ const views = {
   connect: document.getElementById('view-connect'),
   lobby: document.getElementById('view-lobby'),
   settings: document.getElementById('view-settings'),
+  voicePacks: document.getElementById('view-voice-packs'),
   keybinds: document.getElementById('view-keybinds'),
 };
 
@@ -60,6 +61,10 @@ const els = {
   btnResetKeybinds: document.getElementById('btn-reset-keybinds'),
   btnKeybindsBack: document.getElementById('btn-keybinds-back'),
   btnKeybindsBackArrow: document.getElementById('btn-keybinds-back-arrow'),
+  btnVoicePacks: document.getElementById('btn-voice-packs'),
+  btnVoicePacksBackArrow: document.getElementById('btn-voice-packs-back-arrow'),
+  vpSearch: document.getElementById('vp-search'),
+  vpGrid: document.getElementById('vp-grid'),
 };
 
 // Helper: convert e.code to a short display label using e.key
@@ -126,18 +131,46 @@ function addEvent(text) {
   }
 }
 
-// Audio playback using downloaded VGS sound files
+// Audio playback
 let currentAudio = null;
-function playSound(soundFile) {
-  if (!soundFile) return; // some emotes (joke, laugh, taunt) have no audio
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
+
+function playFromUrl(url) {
+  if (!url) {
+    addEvent('<span style="color:var(--danger)">Play error: URL is empty</span>');
+    return;
   }
-  const audio = new Audio(`../assets/sounds/default/${soundFile}`);
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  const audio = new Audio(url);
   audio.volume = settings.volume / 100;
-  audio.play().catch(() => {}); // ignore autoplay policy errors
+  audio.play().catch((e) => { 
+    addEvent(`<span style="color:var(--danger)">Audio error: ${escapeHtml(e.message || String(e))}</span>`); 
+  });
   currentAudio = audio;
+}
+
+function playSound(soundFile) {
+  if (!soundFile) return;
+  playFromUrl(`../assets/sounds/default/${soundFile}`);
+}
+
+// pathToFileUrl removed as IPC now returns data URIs
+
+async function playSoundWithVoicePack(sound, voicePackId, commandId) {
+  if (voicePackId && voicePackId !== 'default') {
+    // Voice pack is active: always go through resolveVoiceSound (download + cache if needed).
+    // If commandId is unknown, the URL is missing, or download fails → silent, no fallback.
+    if (commandId) {
+      try {
+        const localPath = await window.vgsAPI.getVoiceSound(voicePackId, commandId);
+        if (localPath) playFromUrl(localPath);
+        else addEvent(`<span style="color:var(--danger)">VoicePack: No sound mapped for ${commandId}</span>`);
+      } catch (err) {
+        addEvent(`<span style="color:var(--danger)">IPC Error: ${escapeHtml(err.message)}</span>`);
+      }
+    }
+    return; // ALWAYS return here — never fall back to default when a voice pack is active
+  }
+  playSound(sound); // Default pack only
 }
 
 // Status
@@ -281,17 +314,17 @@ window.vgsAPI.onWsMessage((msg) => {
     case 'vgs_event': {
       const evtColor = msg.playerColor || 'var(--accent)';
       addEvent(`<span class="event-player" style="color:${evtColor}">${escapeHtml(msg.playerName)}</span>: ${escapeHtml(msg.label)}`);
-      playSound(msg.sound);
+      playSoundWithVoicePack(msg.sound, msg.voicePackId, msg.commandId);
       break;
     }
   }
 });
 
 // VGS triggered locally (own command)
-window.vgsAPI.onVgsTriggered(({ command, label, sound }) => {
+window.vgsAPI.onVgsTriggered(({ command, commandId, voicePackId, label, sound }) => {
   addEvent(`<span class="event-player" style="color:${playerColor}">${escapeHtml(playerName)}</span>: ${escapeHtml(label)}`);
   if (settings.playOwnSounds) {
-    playSound(sound);
+    playSoundWithVoicePack(sound, voicePackId, commandId);
   }
 });
 
@@ -610,6 +643,188 @@ async function renderCommandTree() {
       els.commandTree.appendChild(group);
     }
   }
+}
+
+// === Voice Packs ===
+const TEST_COMMANDS = ['VAA', 'VVW', 'VER', 'VBE', 'VVGN', 'VEA', 'VEW'];
+let voicePacksList = [];
+let testAbortController = null;
+
+els.btnVoicePacks.addEventListener('click', async () => {
+  await openVoicePacksView();
+});
+
+els.btnVoicePacksBackArrow.addEventListener('click', () => {
+  abortTest();
+  showView('settings');
+});
+
+async function openVoicePacksView() {
+  voicePacksList = await window.vgsAPI.getVoicePacks();
+  renderVoicePacks();
+  showView('voicePacks');
+}
+
+els.vpSearch.addEventListener('input', () => {
+  renderVoicePacks(els.vpSearch.value);
+});
+
+function renderVoicePacks(filter = '') {
+  els.vpGrid.innerHTML = '';
+  const filterLower = filter.toLowerCase();
+  const activePack = userPrefs.voicePack || 'default';
+
+  const filtered = voicePacksList.filter(p =>
+    !filterLower || p.name.toLowerCase().includes(filterLower)
+  );
+
+  if (filtered.length === 0) {
+    els.vpGrid.innerHTML = '<p class="vp-empty">No voice packs found.</p>';
+    return;
+  }
+
+  for (const pack of filtered) {
+    els.vpGrid.appendChild(buildPackCard(pack, activePack));
+  }
+}
+
+function buildPackCard(pack, activePack) {
+  const isActive = pack.id === activePack;
+  const card = document.createElement('div');
+  card.className = 'vp-card' + (isActive ? ' vp-card-active' : '');
+
+  // Artwork
+  const art = document.createElement('div');
+  art.className = 'vp-art';
+  if (pack.artwork) {
+    const img = document.createElement('img');
+    img.src = pack.artwork;
+    img.alt = pack.name;
+    img.onerror = () => { art.innerHTML = `<span class="vp-art-fallback">${escapeHtml(pack.name[0])}</span>`; };
+    art.appendChild(img);
+  } else {
+    art.innerHTML = `<span class="vp-art-fallback">${escapeHtml(pack.name[0])}</span>`;
+  }
+  card.appendChild(art);
+
+  // Info
+  const info = document.createElement('div');
+  info.className = 'vp-info';
+
+  const name = document.createElement('div');
+  name.className = 'vp-name';
+  name.textContent = pack.name;
+  if (isActive) {
+    const badge = document.createElement('span');
+    badge.className = 'vp-active-badge';
+    badge.textContent = 'Active';
+    name.appendChild(badge);
+  }
+  info.appendChild(name);
+
+  if (pack.description) {
+    const desc = document.createElement('div');
+    desc.className = 'vp-desc';
+    desc.textContent = pack.description;
+    info.appendChild(desc);
+  }
+
+  // Removed sound count display
+
+
+  card.appendChild(info);
+
+  // Buttons
+  const btns = document.createElement('div');
+  btns.className = 'vp-btns';
+
+  const testBtn = document.createElement('button');
+  testBtn.className = 'btn-secondary vp-test-btn';
+  testBtn.textContent = 'Test';
+  testBtn.dataset.packId = pack.id;
+  testBtn.addEventListener('click', () => testVoicePack(pack, testBtn));
+  btns.appendChild(testBtn);
+
+  if (!isActive) {
+    const useBtn = document.createElement('button');
+    useBtn.className = 'btn-primary vp-use-btn';
+    useBtn.textContent = 'Use this';
+    useBtn.addEventListener('click', () => setActiveVoicePack(pack.id));
+    btns.appendChild(useBtn);
+  }
+
+  card.appendChild(btns);
+  return card;
+}
+
+function setActiveVoicePack(packId) {
+  userPrefs.voicePack = packId;
+  saveUserPrefs();
+  renderVoicePacks(els.vpSearch.value);
+}
+
+async function testVoicePack(pack, btn) {
+  // If already testing this pack, stop it
+  if (testAbortController && btn.dataset.testing === 'true') {
+    abortTest();
+    return;
+  }
+  abortTest();
+
+  // Determine which commands to test (only those with sounds for non-default packs)
+  let testIds;
+  if (pack.id === 'default') {
+    testIds = TEST_COMMANDS;
+  } else {
+    const available = pack.sounds ? Object.keys(pack.sounds) : [];
+    testIds = TEST_COMMANDS.filter(id => available.includes(id));
+    if (testIds.length === 0) testIds = available;
+  }
+
+  if (testIds.length === 0) return;
+
+  const controller = { aborted: false };
+  testAbortController = controller;
+  btn.dataset.testing = 'true';
+  btn.classList.add('vp-testing');
+
+  // Select one random command
+  const commandId = testIds[Math.floor(Math.random() * testIds.length)];
+
+  if (pack.id === 'default') {
+    // Play default sound via the local assets path — look up sound filename from keybinds
+    const keybinds = await window.vgsAPI.getKeybinds();
+    const bind = keybinds && keybinds.binds && keybinds.binds[commandId];
+    if (bind && bind.sound) playSound(bind.sound);
+  } else {
+    try {
+      const localPath = await window.vgsAPI.getVoiceSound(pack.id, commandId);
+      if (localPath) playFromUrl(localPath);
+      else addEvent(`<span style="color:var(--danger)">Test failed: No sound mapped for ${commandId}</span>`);
+    } catch (err) {
+      addEvent(`<span style="color:var(--danger)">Test IPC Error: ${escapeHtml(err.message)}</span>`);
+    }
+  }
+
+  // Remove feedback after a moment
+  setTimeout(() => {
+    btn.classList.remove('vp-testing');
+    btn.dataset.testing = 'false';
+    if (testAbortController === controller) testAbortController = null;
+  }, 1000);
+}
+
+function abortTest() {
+  if (testAbortController) {
+    testAbortController.aborted = true;
+    testAbortController = null;
+  }
+  // Reset all test buttons
+  document.querySelectorAll('.vp-test-btn').forEach(b => {
+    b.textContent = 'Test';
+    b.classList.remove('vp-testing');
+    b.dataset.testing = 'false';
+  });
 }
 
 // Init settings UI

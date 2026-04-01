@@ -18,6 +18,10 @@ contextBridge.exposeInMainWorld('vgsAPI', {
   resetKeybinds: () => ipcRenderer.send('reset-keybinds'),
   setVgsMonitoring: (enabled) => ipcRenderer.send('set-vgs-monitoring', enabled),
 
+  // Voice Packs
+  getVoicePacks: () => ipcRenderer.invoke('get-voice-packs'),
+  getVoiceSound: (voicePackId, commandId) => ipcRenderer.invoke('get-voice-sound', { voicePackId, commandId }),
+
   // Events from main process
   onWsMessage: (callback) => {
     ipcRenderer.on('ws-message', (event, data) => callback(data));

@@ -439,6 +439,135 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+/* Voice Packs */
+.vp-hint {
+  margin-bottom: 12px;
+  display: block;
+}
+
+.vp-search {
+  margin-bottom: 16px;
+}
+
+.vp-grid {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vp-empty {
+  color: var(--text-dim);
+  font-style: italic;
+  text-align: center;
+  padding: 24px 0;
+}
+
+.vp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  transition: border-color 0.2s;
+}
+
+.vp-card:hover {
+  border-color: var(--text-dim);
+}
+
+.vp-card-active {
+  border-color: var(--accent);
+  background: rgba(91, 138, 255, 0.06);
+}
+
+.vp-art {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vp-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vp-art-fallback {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.vp-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vp-name {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.vp-active-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vp-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vp-meta {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.vp-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.vp-test-btn,
+.vp-use-btn {
+  font-size: 12px;
+  padding: 5px 12px;
+  min-width: 72px;
+  text-align: center;
+}
+
+.vp-testing {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
 /* Keybinds */
 .keybinds-header {
   margin-bottom: 16px;

@@ -6,6 +6,7 @@ const { uIOhook, UiohookKey } = require('uiohook-napi');
 const { VGSStateMachine } = require('./vgs/stateMachine');
 const { buildDefaultKeybinds, mergeKeybinds, buildTreeFromKeybinds } = require('./vgs/keybinds');
 const commands = require('./vgs/VGS_sound.json');
+const voicePacksRegistry = require('./vgs/voice_packs.json');
 const keyBlocker = require('./vgs/keyBlocker');
 
 let mainWindow;
@@ -55,6 +56,86 @@ function saveUserPrefs() {
 function rebuildStateMachine() {
   const tree = buildTreeFromKeybinds(keybinds);
   vgsMachine = new VGSStateMachine(tree, keybinds.activationCode, onVgsMatch, onVgsReset);
+}
+
+// --- Voice Pack system ---
+
+// Reverse-lookup: given the e.code dot-path from stateMachine, find the original QWERTY commandId (e.g. "VAA")
+function getCommandId(commandPath) {
+  for (const [id, cmd] of Object.entries(keybinds.binds)) {
+    if (cmd.codes && cmd.codes.join('.') === commandPath) return id;
+  }
+  return null;
+}
+
+function downloadFile(url, destPath) {
+  return new Promise((resolve, reject) => {
+    const protocol = url.startsWith('https') ? require('https') : require('http');
+    const file = fs.createWriteStream(destPath);
+    const req = protocol.get(url, (response) => {
+      if (response.statusCode !== 200) {
+        file.destroy();
+        try { fs.unlinkSync(destPath); } catch {}
+        reject(new Error(`HTTP ${response.statusCode} for ${url}`));
+        return;
+      }
+      response.pipe(file);
+      file.on('finish', () => { file.close(); resolve(); });
+      file.on('error', (err) => {
+        try { fs.unlinkSync(destPath); } catch {}
+        reject(err);
+      });
+    });
+    req.on('error', (err) => {
+      file.destroy();
+      try { fs.unlinkSync(destPath); } catch {}
+      reject(err);
+    });
+  });
+}
+
+async function resolveVoiceSound(voicePackId, commandId) {
+  if (!voicePackId || voicePackId === 'default' || !commandId) return null;
+
+  const pack = voicePacksRegistry.find(p => p.id === voicePackId);
+  if (!pack || !pack.sounds || !pack.sounds[commandId]) return null;
+
+  const url = pack.sounds[commandId];
+  const soundDir = path.join(app.getPath('userData'), 'sounds', voicePackId);
+  // Extract filename from URL (from 'vox' to '.ogg')
+  const lastPart = url.split('/').pop().split('?')[0];
+  const voxIdx = lastPart.toLowerCase().indexOf('vox');
+  let filename = voxIdx !== -1 ? lastPart.substring(voxIdx) : (commandId + '.ogg');
+
+  // Format naming convention (e.g. vox_vgs_attack_a.ogg -> VOX_VGS_Attack_A.ogg)
+  if (filename.includes('_')) {
+    filename = filename.split('_').map(part => {
+      const isLast = part.toLowerCase().endsWith('.ogg');
+      const word = isLast ? part.slice(0, -4) : part;
+      const lower = word.toLowerCase();
+      let transformed;
+
+      if (lower === 'vox' || lower === 'vgs') {
+        transformed = word.toUpperCase();
+      } else {
+        transformed = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+      return transformed + (isLast ? '.ogg' : '');
+    }).join('_');
+  }
+
+  const soundFile = path.join(soundDir, filename);
+
+  if (fs.existsSync(soundFile)) return soundFile;
+
+  try {
+    fs.mkdirSync(soundDir, { recursive: true });
+    await downloadFile(url, soundFile);
+    return soundFile;
+  } catch (err) {
+    console.error(`[VoicePack] Download failed for ${voicePackId}/${commandId}: ${err.message}`);
+    return null;
+  }
 }
 
 // Map uiohook scancodes to e.code strings (layout-independent physical key identifiers)
@@ -217,6 +298,9 @@ function hideVgsMenu() {
 
 // VGS match callback
 function onVgsMatch(command, label, sound) {
+  const commandId = getCommandId(command);
+  const voicePackId = userPrefs.voicePack || 'default';
+
   if (ws && ws.readyState === WebSocket.OPEN && currentRoom) {
     ws.send(JSON.stringify({
       type: 'vgs_event',
@@ -224,13 +308,15 @@ function onVgsMatch(command, label, sound) {
       playerName: currentPlayer,
       playerColor: currentPlayerColor,
       command,
+      commandId,
+      voicePackId,
       label,
       sound,
     }));
   }
 
   showOverlay(currentPlayer || 'You', label, currentPlayerColor);
-  if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('vgs-triggered', { command, label, sound });
+  if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('vgs-triggered', { command, commandId, voicePackId, label, sound });
 }
 
 // VGS reset callback — fires on timeout, no-match, or after a match completes
@@ -360,6 +446,23 @@ ipcMain.on('set-vgs-monitoring', (event, enabled) => {
   vgsMonitoringEnabled = enabled;
   if (!enabled && vgsMachine.isActive()) {
     vgsMachine.reset();
+  }
+});
+
+ipcMain.handle('get-voice-packs', () => {
+  return voicePacksRegistry;
+});
+
+ipcMain.handle('get-voice-sound', async (event, { voicePackId, commandId }) => {
+  const localPath = await resolveVoiceSound(voicePackId, commandId);
+  if (!localPath) return null; // null if unavailable or default pack
+  
+  try {
+    const data = fs.readFileSync(localPath);
+    return `data:audio/ogg;base64,${data.toString('base64')}`;
+  } catch (err) {
+    console.error(`[VoicePack] Failed to read cached file: ${err.message}`);
+    return null;
   }
 });
 

@@ -94,7 +94,21 @@
       <input type="checkbox" id="toggle-own-sounds" checked>
     </div>
     <button id="btn-keybinds" class="btn-primary btn-outline">Customize Keybinds</button>
+    <button id="btn-voice-packs" class="btn-primary btn-outline">Voice Packs</button>
     <button id="btn-back" class="btn-primary">Back to Lobby</button>
+  </div>
+
+  <!-- Voice Packs View -->
+  <div id="view-voice-packs" class="view">
+    <div class="settings-header">
+      <button id="btn-voice-packs-back-arrow" class="btn-icon" title="Back to Settings">&#x2190;</button>
+      <h2>Voice Packs</h2>
+    </div>
+    <p class="hint vp-hint">Select a voice pack. Missing sounds are downloaded on first use.</p>
+    <div class="vp-search">
+      <input type="text" id="vp-search" placeholder="Search voice packs...">
+    </div>
+    <div id="vp-grid" class="vp-grid"></div>
   </div>
 
   <!-- Keybinds View -->

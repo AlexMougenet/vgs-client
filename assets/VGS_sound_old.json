@@ -1,0 +1,834 @@
+{
+    "V": {
+        "A": {
+            "1": {
+                "label": "\"Attack left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/8e/VOX_VGS_Attack_1.ogg/revision/latest?cb=20140107225000",
+                "completeVGS": "VA1"
+            },
+            "2": {
+                "label": "\"Attack middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f4/VOX_VGS_Attack_2.ogg/revision/latest?cb=20140107230352",
+                "completeVGS": "VA2"
+            },
+            "3": {
+                "label": "\"Attack right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/ea/VOX_VGS_Attack_3.ogg/revision/latest?cb=20140107230357",
+                "completeVGS": "VA3"
+            },
+            "A": {
+                "label": "\"Attack\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/b1/VOX_VGS_Attack_A.ogg/revision/latest?cb=20140107230402",
+                "completeVGS": "VAA"
+            },
+            "F": {
+                "label": "\"Attack Fire Giant\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0f/VOX_VGS_Attack_F.ogg/revision/latest?cb=20140107230407",
+                "completeVGS": "VAF"
+            },
+            "G": {
+                "label": "\"Attack the Gold Fury\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e5/VOX_VGS_Attack_G.ogg/revision/latest?cb=20140107230412",
+                "completeVGS": "VAG"
+            },
+            "M": {
+                "label": "\"Attack the Titan\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/35/VOX_VGS_Attack_T.ogg/revision/latest?cb=20140324025848",
+                "completeVGS": "VAM"
+            },
+            "T": {
+                "1": {
+                    "label": "Attack left tower/phoenix",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/5c/VOX_VGS_Tower_1.ogg/revision/latest?cb=20140129121322",
+                    "completeVGS": "VAT1"
+                },
+                "2": {
+                    "label": "Attack middle tower/phoenix",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/32/VOX_VGS_Tower_2.ogg/revision/latest?cb=20140129121327",
+                    "completeVGS": "VAT2"
+                },
+                "3": {
+                    "label": "Attack right tower/phoenix",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/b3/VOX_VGS_Tower_3.ogg/revision/latest?cb=20140129121332",
+                    "completeVGS": "VAT3"
+                }
+            }
+        },
+        "B": {
+            "1": {
+                "label": "\"Enemies in left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/92/VOX_VGS_Enemy_1.ogg/revision/latest?cb=20140107230612",
+                "completeVGS": "VB1"
+            },
+            "2": {
+                "label": "\"Enemies in middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f5/VOX_VGS_Enemy_2.ogg/revision/latest?cb=20140107230617",
+                "completeVGS": "VB2"
+            },
+            "3": {
+                "label": "\"Enemies in right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/49/VOX_VGS_Enemy_3.ogg/revision/latest?cb=20140107230622",
+                "completeVGS": "VB3"
+            },
+            "A": {
+                "label": "\"Enemy ultimate incoming\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/00/VOX_VGS_Ultimate_Enemy_A.ogg/revision/latest?cb=20140129121337",
+                "completeVGS": "VBA"
+            },
+            "B": {
+                "label": "\"Enemies have returned to base.\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/be/VOX_VGS_Enemy_B.ogg/revision/latest?cb=20140107230627",
+                "completeVGS": "VBB"
+            },
+            "D": {
+                "label": "\"Enemy ultimate down\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/d/de/VOX_VGS_Ultimate_Enemy_D.ogg/revision/latest?cb=20140129121347",
+                "completeVGS": "VBD"
+            },
+            "E": {
+                "label": "\"Enemies behind us\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0a/VOX_VGS_Enemy_E.ogg/revision/latest?cb=20140107230636",
+                "completeVGS": "VBE"
+            },
+            "F": {
+                "label": "\"Enemies at the Fire Giant\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/81/VOX_VGS_Enemy_F.ogg/revision/latest?cb=20140107230641",
+                "completeVGS": "VBF"
+            },
+            "G": {
+                "label": "\"Enemies at the Gold Fury\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/15/VOX_VGS_Enemy_G.ogg/revision/latest?cb=20140107230646",
+                "completeVGS": "VBG"
+            },
+            "J": {
+                "1": {
+                    "label": "\"Enemies in the Left Jungle\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c9/VOX_VGS_Enemy_Jungle_1.ogg/revision/latest?cb=20140129121357",
+                    "completeVGS": "VBJ1"
+                },
+                "3": {
+                    "label": "\"Enemies in the right jungle\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6d/VOX_VGS_Enemy_Jungle_2.ogg/revision/latest?cb=20140129121402",
+                    "completeVGS": "VBJ3"
+                },
+                "J": {
+                    "label": "\"Enemies in the jungle\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/66/VOX_VGS_Enemy_J.ogg/revision/latest?cb=20140107230651",
+                    "completeVGS": "VBJJ"
+                }
+            },
+            "M": {
+                "label": "\"Enemies at our Titan\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/82/VOX_VGS_Enemy_T.ogg/revision/latest?cb=20140324025858",
+                "completeVGS": "VBM"
+            },
+            "S": {
+                "label": "\"Enemy spotted\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0f/VOX_VGS_Enemy_S.ogg/revision/latest?cb=20140107230701",
+                "completeVGS": "VBS"
+            }
+        },
+        "C": {
+            "1": {
+                "label": "\"Be careful left\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/bb/VOX_VGS_Careful_1.ogg/revision/latest?cb=20140107230434",
+                "completeVGS": "VC1"
+            },
+            "2": {
+                "label": "\"Be careful middle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f1/VOX_VGS_Careful_2.ogg/revision/latest?cb=20140107230438",
+                "completeVGS": "VC2"
+            },
+            "3": {
+                "label": "\"Be careful right\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6c/VOX_VGS_Careful_3.ogg/revision/latest?cb=20140107230444",
+                "completeVGS": "VC3"
+            },
+            "B": {
+                "label": "\"Return to base\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/91/VOX_VGS_Careful_B.ogg/revision/latest?cb=20140107230453",
+                "completeVGS": "VCB"
+            },
+            "C": {
+                "label": "\"Be careful\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/54/VOX_VGS_Careful_C.ogg/revision/latest?cb=20140107230459",
+                "completeVGS": "VCC"
+            },
+            "J": {
+                "label": "\"Be careful in the jungle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/47/VOX_VGS_Careful_J.ogg/revision/latest?cb=20140129121407",
+                "completeVGS": "VCJ"
+            }
+        },
+        "D": {
+            "1": {
+                "label": "\"Defend left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/46/VOX_VGS_Defend_1.ogg/revision/latest?cb=20140107230508",
+                "completeVGS": "VD1"
+            },
+            "2": {
+                "label": "\"Defend middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c2/VOX_VGS_Defend_2.ogg/revision/latest?cb=20140107230513",
+                "completeVGS": "VD2"
+            },
+            "3": {
+                "label": "\"Defend right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/d/d9/VOX_VGS_Defend_3.ogg/revision/latest?cb=20140107230518",
+                "completeVGS": "VD3"
+            },
+            "D": {
+                "label": "\"Defend\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a7/VOX_VGS_Defend_D.ogg/revision/latest?cb=20140107230523",
+                "completeVGS": "VDD"
+            },
+            "F": {
+                "label": "\"Defend the Fire Giant\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a7/VOX_VGS_Defend_F.ogg/revision/latest?cb=20140107230528",
+                "completeVGS": "VDF"
+            },
+            "G": {
+                "label": "\"Defend the Gold Fury\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/07/VOX_VGS_Defend_G.ogg/revision/latest?cb=20140107230532",
+                "completeVGS": "VDG"
+            },
+            "M": {
+                "label": "\"Defend the Titan\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/b2/VOX_VGS_Defend_T.ogg/revision/latest?cb=20140324025853",
+                "completeVGS": "VDM"
+            }
+        },
+        "E": {
+            "A": {
+                "label": "Awesome",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/06/VOX_VGS_Emote_A.ogg/revision/latest?cb=20140107230542",
+                "completeVGS": "VEA"
+            },
+            "G": {
+                "label": "Greatest",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/ce/VOX_VGS_Emote_G.ogg/revision/latest?cb=20140107230547",
+                "completeVGS": "VEG"
+            },
+            "J": {
+                "label": "Joke",
+                "sound": null,
+                "completeVGS": "VEJ"
+            },
+            "L": {
+                "label": "Laugh",
+                "sound": null,
+                "completeVGS": "VEL"
+            },
+            "R": {
+                "label": "You rock",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/ba/VOX_VGS_Emote_R.ogg/revision/latest?cb=20140107230557",
+                "completeVGS": "VER"
+            },
+            "T": {
+                "label": "Taunt",
+                "sound": null,
+                "completeVGS": "VET"
+            },
+            "W": {
+                "label": "Woohoo",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/25/VOX_VGS_Emote_W.ogg/revision/latest?cb=20140107230602",
+                "completeVGS": "VEW"
+            }
+        },
+        "F": {
+            "1": {
+                "label": "\"Enemy missing left\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/07/VOX_VGS_MIA_1.ogg/revision/latest?cb=20140107230814",
+                "completeVGS": "VF1"
+            },
+            "2": {
+                "label": "\"Enemy missing middle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/b3/VOX_VGS_MIA_2.ogg/revision/latest?cb=20140107230819",
+                "completeVGS": "VF2"
+            },
+            "3": {
+                "label": "\"Enemy missing right\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/36/VOX_VGS_MIA_3.ogg/revision/latest?cb=20140107230825",
+                "completeVGS": "VF3"
+            },
+            "F": {
+                "label": "\"Enemy missing\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a9/VOX_VGS_MIA_M.ogg/revision/latest?cb=20140107230829",
+                "completeVGS": "VFF"
+            }
+        },
+        "G": {
+            "1": {
+                "label": "\"Gank left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/7f/VOX_VGS_Gank_1.ogg/revision/latest?cb=20140107230706",
+                "completeVGS": "VG1"
+            },
+            "2": {
+                "label": "\"Gank middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/1f/VOX_VGS_Gank_2.ogg/revision/latest?cb=20140107230711",
+                "completeVGS": "VG2"
+            },
+            "3": {
+                "label": "\"Gank right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/5d/VOX_VGS_Gank_3.ogg/revision/latest?cb=20140107230716",
+                "completeVGS": "VG3"
+            },
+            "G": {
+                "label": "\"Gank\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/49/VOX_VGS_Gank_G.ogg/revision/latest?cb=20140107230726",
+                "completeVGS": "VGG"
+            }
+        },
+        "H": {
+            "1": {
+                "label": "\"Help left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/43/VOX_VGS_Help_1.ogg/revision/latest?cb=20140107230735",
+                "completeVGS": "VH1"
+            },
+            "2": {
+                "label": "\"Help middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/63/VOX_VGS_Help_2.ogg/revision/latest?cb=20140107230740",
+                "completeVGS": "VH2"
+            },
+            "3": {
+                "label": "\"Help right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/2f/VOX_VGS_Help_3.ogg/revision/latest?cb=20140107230745",
+                "completeVGS": "VH3"
+            },
+            "H": {
+                "label": "\"Help\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/40/VOX_VGS_Help.ogg/revision/latest?cb=20140107230731",
+                "completeVGS": "VHH"
+            },
+            "S": {
+                "label": "\"Need Healing\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/20/VOX_VGS_Help_S.ogg/revision/latest?cb=20140129121412",
+                "completeVGS": "VHS"
+            }
+        },
+        "I": {
+            "1": {
+                "label": "\"Enemies incoming left\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/16/VOX_VGS_Incoming_1.ogg/revision/latest?cb=20140107230750",
+                "completeVGS": "VI1"
+            },
+            "2": {
+                "label": "\"Enemies incoming middle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/15/VOX_VGS_Incoming_2.ogg/revision/latest?cb=20140107230800",
+                "completeVGS": "VI2"
+            },
+            "3": {
+                "label": "\"Enemies incoming right\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0a/VOX_VGS_Incoming_3.ogg/revision/latest?cb=20140107230805",
+                "completeVGS": "VI3"
+            },
+            "I": {
+                "label": "\"Enemies incoming\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/06/VOX_VGS_Incoming_I.ogg/revision/latest?cb=20140107230810",
+                "completeVGS": "VII"
+            }
+        },
+        "Q": {
+            "1": {
+                "label": "\"Ward Left\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/1b/VOX_VGS_Ward_1.ogg/revision/latest?cb=20140129121422",
+                "completeVGS": "VQ1"
+            },
+            "2": {
+                "label": "\"Ward middle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/18/VOX_VGS_Ward_2.ogg/revision/latest?cb=20140129121427",
+                "completeVGS": "VQ2"
+            },
+            "3": {
+                "label": "\"Ward Right\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/3b/VOX_VGS_Ward_3.ogg/revision/latest?cb=20140129121432",
+                "completeVGS": "VQ3"
+            },
+            "F": {
+                "label": "\"Ward Fire Giant\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/9d/VOX_VGS_Ward_F.ogg/revision/latest?cb=20140129121437",
+                "completeVGS": "VQF"
+            },
+            "G": {
+                "label": "\"Ward Gold Fury\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f0/VOX_VGS_Ward_G.ogg/revision/latest?cb=20140129121442",
+                "completeVGS": "VQG"
+            },
+            "N": {
+                "label": "\"Need Wards\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/ba/VOX_VGS_Ward_N.ogg/revision/latest?cb=20140129121448",
+                "completeVGS": "VQN"
+            },
+            "Q": {
+                "label": "\"Ward Here\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a4/VOX_VGS_Ward.ogg/revision/latest?cb=20140129121417",
+                "completeVGS": "VQQ"
+            }
+        },
+        "R": {
+            "1": {
+                "label": "\"Retreat left lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/4c/VOX_VGS_Retreat_1.ogg/revision/latest?cb=20140107231103",
+                "completeVGS": "VR1"
+            },
+            "2": {
+                "label": "\"Retreat middle lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/30/VOX_VGS_Retreat_2.ogg/revision/latest?cb=20140107231113",
+                "completeVGS": "VR2"
+            },
+            "3": {
+                "label": "\"Retreat right lane\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/56/VOX_VGS_Retreat_3.ogg/revision/latest?cb=20140107231118",
+                "completeVGS": "VR3"
+            },
+            "J": {
+                "label": "\"Retreat from the Jungle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/3f/VOX_VGS_Retreat_J.ogg/revision/latest?cb=20140129121453",
+                "completeVGS": "VRJ"
+            },
+            "R": {
+                "label": "\"Retreat\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e4/VOX_VGS_Retreat_R.ogg/revision/latest?cb=20140107231123",
+                "completeVGS": "VRR"
+            },
+            "S": {
+                "label": "\"Save yourself\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/eb/VOX_VGS_Retreat_S.ogg/revision/latest?cb=20140129121458",
+                "completeVGS": "VRS"
+            }
+        },
+        "S": {
+            "A": {
+                "1": {
+                    "label": "\"I'll Attack left lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/03/VOX_VGS_Self_Attack_1.ogg/revision/latest?cb=20140107231202",
+                    "completeVGS": "VSA1"
+                },
+                "2": {
+                    "label": "\"I'll Attack middle lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a6/VOX_VGS_Self_Attack_2.ogg/revision/latest?cb=20140107231207",
+                    "completeVGS": "VSA2"
+                },
+                "3": {
+                    "label": "\"I'll Attack right lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a0/VOX_VGS_Self_Attack_3.ogg/revision/latest?cb=20140107231212",
+                    "completeVGS": "VSA3"
+                },
+                "A": {
+                    "label": "\"I'll Attack\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/ec/VOX_VGS_Self_Attack.ogg/revision/latest?cb=20140107231157",
+                    "completeVGS": "VSAA"
+                },
+                "F": {
+                    "label": "\"I'll Attack Fire Giant\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/04/VOX_VGS_Self_Attack_F.ogg/revision/latest?cb=20140107231217",
+                    "completeVGS": "VSAF"
+                },
+                "G": {
+                    "label": "\"I'll Attack the Gold Fury\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c8/VOX_VGS_Self_Attack_G.ogg/revision/latest?cb=20140107231222",
+                    "completeVGS": "VSAG"
+                },
+                "M": {
+                    "label": "\"I'll Attack the Titan\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/66/VOX_VGS_Self_Attack_T.ogg/revision/latest?cb=20140324025923",
+                    "completeVGS": "VSAM"
+                }
+            },
+            "B": {
+                "B": {
+                    "label": "\"I'm going for jungle buff\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/fc/VOX_VGS_Self_B.ogg/revision/latest?cb=20140107231242",
+                    "completeVGS": "VSBB"
+                },
+                "N": {
+                    "label": "\"I need the jungle buff.\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/62/VOX_VGS_Jungle_Buff_N.ogg/revision/latest?cb=20140129122220",
+                    "completeVGS": "VSBN"
+                },
+                "T": {
+                    "label": "\"Take this jungle buff.\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/94/VOX_VGS_Jungle_Buff_C.ogg/revision/latest?cb=20140129122215",
+                    "completeVGS": "VSBT"
+                }
+            },
+            "D": {
+                "1": {
+                    "label": "\"I'll defend left lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/03/VOX_VGS_Self_Defend_1.ogg/revision/latest?cb=20140107231301",
+                    "completeVGS": "VSD1"
+                },
+                "2": {
+                    "label": "\"I'll defend middle lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6b/VOX_VGS_Self_Defend_2.ogg/revision/latest?cb=20140107231306",
+                    "completeVGS": "VSD2"
+                },
+                "3": {
+                    "label": "\"I'll defend right lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/2f/VOX_VGS_Self_Defend_3.ogg/revision/latest?cb=20140107231311",
+                    "completeVGS": "VSD3"
+                },
+                "D": {
+                    "label": "\"I'll defend\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6c/VOX_VGS_Self_Defend.ogg/revision/latest?cb=20140107231252",
+                    "completeVGS": "VSDD"
+                },
+                "F": {
+                    "label": "\"I'll defend the Fire Giant\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0b/VOX_VGS_Self_Defend_F.ogg/revision/latest?cb=20140107231316",
+                    "completeVGS": "VSDF"
+                },
+                "G": {
+                    "label": "\"I'll defend the Gold Fury\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/89/VOX_VGS_Self_Defend_G.ogg/revision/latest?cb=20140107231321",
+                    "completeVGS": "VSDG"
+                },
+                "M": {
+                    "label": "\"I'll defend the Titan\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/26/VOX_VGS_Self_Defend_T.ogg/revision/latest?cb=20140324025929",
+                    "completeVGS": "VSDM"
+                }
+            },
+            "G": {
+                "1": {
+                    "label": "\"I'll gank left lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f2/VOX_VGS_Self_Gank_1.ogg/revision/latest?cb=20140107231336",
+                    "completeVGS": "VSG1"
+                },
+                "2": {
+                    "label": "\"I'll gank middle lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/7b/VOX_VGS_Self_Gank_2.ogg/revision/latest?cb=20140107231341",
+                    "completeVGS": "VSG2"
+                },
+                "3": {
+                    "label": "\"I'll gank right lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/ce/VOX_VGS_Self_Gank_3.ogg/revision/latest?cb=20140107231346",
+                    "completeVGS": "VSG3"
+                },
+                "G": {
+                    "label": "\"I'll gank\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/2f/VOX_VGS_Self_Gank.ogg/revision/latest?cb=20140107231331",
+                    "completeVGS": "VSGG"
+                }
+            },
+            "O": {
+                "label": "\"I'm on it\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a4/VOX_VGS_Self_O.ogg/revision/latest?cb=20140107231356",
+                "completeVGS": "VSO"
+            },
+            "Q": {
+                "1": {
+                    "label": "\"I will ward left\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/ac/VOX_VGS_Self_Ward_1.ogg/revision/latest?cb=20140129121513",
+                    "completeVGS": "VSQ1"
+                },
+                "2": {
+                    "label": "\"I will ward middle\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/af/VOX_VGS_Self_Ward_2.ogg/revision/latest?cb=20140129121523",
+                    "completeVGS": "VSQ2"
+                },
+                "3": {
+                    "label": "\"I will ward right\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f3/VOX_VGS_Self_Ward_3.ogg/revision/latest?cb=20140129121528",
+                    "completeVGS": "VSQ3"
+                },
+                "Q": {
+                    "label": "\"I will ward\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/bf/VOX_VGS_Self_Ward.ogg/revision/latest?cb=20140129121508",
+                    "completeVGS": "VSQQ"
+                }
+            },
+            "R": {
+                "label": "\"Falling back\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/56/VOX_VGS_Self_R.ogg/revision/latest?cb=20140107231406",
+                "completeVGS": "VSR"
+            },
+            "S": {
+                "label": "\"I'm building Stacks\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/7b/VOX_VGS_Self_Stacks.ogg/revision/latest?cb=20140129121503",
+                "completeVGS": "VSS"
+            },
+            "T": {
+                "1": {
+                    "label": "\"I'm returning left lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/d/dc/VOX_VGS_Self_Returned_1.ogg/revision/latest?cb=20140107231421",
+                    "completeVGS": "VST1"
+                },
+                "2": {
+                    "label": "\"I'm returning middle lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/08/VOX_VGS_Self_Returned_2.ogg/revision/latest?cb=20140107231426",
+                    "completeVGS": "VST2"
+                },
+                "3": {
+                    "label": "\"I'm returning right lane\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e5/VOX_VGS_Self_Returned_3.ogg/revision/latest?cb=20140107231430",
+                    "completeVGS": "VST3"
+                },
+                "B": {
+                    "label": "\"I'm returning to base\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/5c/VOX_VGS_Self_Returned_B.ogg/revision/latest?cb=20140107231435",
+                    "completeVGS": "VSTB"
+                },
+                "T": {
+                    "label": "\"I have returned\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e4/VOX_VGS_Self_Returned.ogg/revision/latest?cb=20140107231411",
+                    "completeVGS": "VSTT"
+                }
+            }
+        },
+        "T": {
+            "1": {
+                "label": "\"Enemies have returned left\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/2a/VOX_VGS_Returned_1.ogg/revision/latest?cb=20140107231128",
+                "completeVGS": "VT1"
+            },
+            "2": {
+                "label": "\"Enemies have returned middle\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/90/VOX_VGS_Returned_2.ogg/revision/latest?cb=20140107231133",
+                "completeVGS": "VT2"
+            },
+            "3": {
+                "label": "\"Enemies have returned right\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/31/VOX_VGS_Returned_3.ogg/revision/latest?cb=20140107231142",
+                "completeVGS": "VT3"
+            },
+            "T": {
+                "label": "\"Enemies have returned\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/ed/VOX_VGS_Returned_E.ogg/revision/latest?cb=20140107231152",
+                "completeVGS": "VTT"
+            }
+        },
+        "V": {
+            "A": {
+                "label": "\"Ok\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/fc/VOX_VGS_OK.ogg/revision/latest?cb=20140107230839",
+                "completeVGS": "VVA"
+            },
+            "B": {
+                "label": "\"Be right back\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/77/VOX_VGS_BRB.ogg/revision/latest?cb=20140107230423",
+                "completeVGS": "VVB"
+            },
+            "C": {
+                "label": "\"Completed\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/ee/VOX_VGS_Completed.ogg/revision/latest?cb=20140107230503",
+                "completeVGS": "VVC"
+            },
+            "G": {
+                "B": {
+                    "label": "\"Bye\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/cc/VOX_VGS_Other_G_B.ogg/revision/latest?cb=20140107230844",
+                    "completeVGS": "VVGB"
+                },
+                "F": {
+                    "label": "\"Have fun\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/98/VOX_VGS_Emote_F.ogg/revision/latest?cb=20140129122235",
+                    "completeVGS": "VVGF"
+                },
+                "G": {
+                    "label": "\"Good game\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/16/VOX_VGS_Other_G_G.ogg/revision/latest?cb=20140107230849",
+                    "completeVGS": "VVGG"
+                },
+                "H": {
+                    "label": "\"Hi\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/30/VOX_VGS_Other_G_H.ogg/revision/latest?cb=20140107230854",
+                    "completeVGS": "VVGH"
+                },
+                "L": {
+                    "label": "\"Good luck\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/4c/VOX_VGS_Other_G_L.ogg/revision/latest?cb=20140107230859",
+                    "completeVGS": "VVGL"
+                },
+                "N": {
+                    "label": "\"Nice Job\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c6/VOX_VGS_NiceJob.ogg/revision/latest?cb=20140107230834",
+                    "completeVGS": "VVGN"
+                },
+                "O": {
+                    "label": "\"Oops\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/44/VOX_VGS_Other_G_O.ogg/revision/latest?cb=20140107230909",
+                    "completeVGS": "VVGO"
+                },
+                "Q": {
+                    "label": "\"Quiet\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0b/VOX_VGS_Other_G_Q.ogg/revision/latest?cb=20140107230914",
+                    "completeVGS": "VVGQ"
+                },
+                "R": {
+                    "label": "\"No Problem\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/1a/VOX_VGS_Other_G_R.ogg/revision/latest?cb=20140107230919",
+                    "completeVGS": "VVGR"
+                },
+                "S": {
+                    "label": "\"Curses\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a5/VOX_VGS_Other_G_S.ogg/revision/latest?cb=20140107230925",
+                    "completeVGS": "VVGS"
+                },
+                "T": {
+                    "label": "\"That's too bad\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/e5/VOX_VGS_Other_G_T.ogg/revision/latest?cb=20140107230935",
+                    "completeVGS": "VVGT"
+                },
+                "W": {
+                    "label": "\"You're welcome\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/3b/VOX_VGS_Other_G_W.ogg/revision/latest?cb=20140107230940",
+                    "completeVGS": "VVGW"
+                }
+            },
+            "K": {
+                "label": "\"Stepping away for a moment.\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6c/VOX_VGS_AFK.ogg/revision/latest?cb=20140107203635",
+                "completeVGS": "VVK"
+            },
+            "M": {
+                "label": "\"Out of mana\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/35/VOX_VGS_Other_G_M.ogg/revision/latest?cb=20140107230904",
+                "completeVGS": "VVM"
+            },
+            "N": {
+                "label": "\"No\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/41/VOX_VGS_Emote_No.ogg/revision/latest?cb=20140107230552",
+                "completeVGS": "VVN"
+            },
+            "P": {
+                "label": "\"Please?\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/7e/VOX_VGS_Emote_Please.ogg/revision/latest?cb=20140129122225",
+                "completeVGS": "VVP"
+            },
+            "S": {
+                "label": "\"Sorry\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/9c/VOX_VGS_Other_S.ogg/revision/latest?cb=20140107230944",
+                "completeVGS": "VVS"
+            },
+            "T": {
+                "label": "\"Thanks\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0a/VOX_VGS_Thanks.ogg/revision/latest?cb=20140107231440",
+                "completeVGS": "VVT"
+            },
+            "V": {
+                "A": {
+                    "label": "\"Set up an ambush here\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/b9/VOX_VGS_Other_V_A.ogg/revision/latest?cb=20140107230949",
+                    "completeVGS": "VVVA"
+                },
+                "B": {
+                    "label": "\"Behind us\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/74/VOX_VGS_Other_V_B.ogg/revision/latest?cb=20140107230954",
+                    "completeVGS": "VVVB"
+                },
+                "C": {
+                    "label": "\"Chase the enemy\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/45/VOX_VGS_Other_V_C.ogg/revision/latest?cb=20140107230959",
+                    "completeVGS": "VVVC"
+                },
+                "D": {
+                    "label": "\"Ultimate is down\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a8/VOX_VGS_Other_V_D.ogg/revision/latest?cb=20140107231004",
+                    "completeVGS": "VVVD"
+                },
+                "E": {
+                    "label": "\"On my way\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/e/ee/VOX_VGS_Other_V_W.ogg/revision/latest?cb=20140107231049",
+                    "completeVGS": "VVVE"
+                },
+                "F": {
+                    "label": "\"Follow me\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/a8/VOX_VGS_Other_V_F.ogg/revision/latest?cb=20140107231009",
+                    "completeVGS": "VVVF"
+                },
+                "G": {
+                    "label": "\"Group up\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/00/VOX_VGS_Other_V_G.ogg/revision/latest?cb=20140107231014",
+                    "completeVGS": "VVVG"
+                },
+                "J": {
+                    "label": "\"Going into the jungle\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/7/79/VOX_VGS_Other_V_J.ogg/revision/latest?cb=20140107231019",
+                    "completeVGS": "VVVJ"
+                },
+                "P": {
+                    "label": "\"Split push\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/9c/VOX_VGS_Other_V_P.ogg/revision/latest?cb=20140129122250",
+                    "completeVGS": "VVVP"
+                },
+                "R": {
+                    "label": "\"Ultimate is ready\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/68/VOX_VGS_Other_V_R.ogg/revision/latest?cb=20140107231029",
+                    "completeVGS": "VVVR"
+                },
+                "S": {
+                    "label": "\"Stay here\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f0/VOX_VGS_Other_V_S.ogg/revision/latest?cb=20140107231034",
+                    "completeVGS": "VVVS"
+                },
+                "T": {
+                    "label": "\"It's a trap\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/3f/VOX_VGS_Other_V_T.ogg/revision/latest?cb=20140107231039",
+                    "completeVGS": "VVVT"
+                },
+                "W": {
+                    "label": "\"Place a Ward for teleport\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c5/VOX_VGS_Ward_T.ogg/revision/latest?cb=20140129122259",
+                    "completeVGS": "VVVW"
+                },
+                "X": {
+                    "label": "\"Spread Out\"",
+                    "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/82/VOX_VGS_Other_V_X.ogg/revision/latest?cb=20140129122435",
+                    "completeVGS": "VVVX"
+                }
+            },
+            "W": {
+                "label": "\"Wait\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/fd/VOX_VGS_Other_W.ogg/revision/latest?cb=20140107231053",
+                "completeVGS": "VVW"
+            },
+            "X": {
+                "label": "\"Cancel that\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/3/34/VOX_VGS_Cancel.ogg/revision/latest?cb=20140107230429",
+                "completeVGS": "VVX"
+            },
+            "Y": {
+                "label": "\"Yes\"",
+                "sound": "https://static.wikia.nocookie.net/smite_gamepedia/images/a/ac/VOX_VGS_Emote_Yes.ogg/revision/latest?cb=20140107230607",
+                "completeVGS": "VVY"
+            }
+        },
+        "X": {
+            "W": {
+                "label": "W - Wave",
+                "sound": null,
+                "completeVGS": "VXW"
+            },
+            "D": {
+                "label": "D - Dance",
+                "sound": null,
+                "completeVGS": "VXD"
+            },
+            "C": {
+                "label": "C - Clap",
+                "sound": null,
+                "completeVGS": "VXC"
+            },
+            "S": {
+                "label": "S - Special",
+                "sound": null,
+                "completeVGS": "VXS"
+            },
+            "F": {
+                "label": "F - Furious",
+                "sound": null,
+                "completeVGS": "VXF"
+            },
+            "G": {
+                "label": "G - Special 2",
+                "sound": null,
+                "completeVGS": "VXG"
+            },
+            "E": {
+                "label": "E - Global Emote",
+                "sound": null,
+                "completeVGS": "VXE"
+            }
+        }
+    }
+}

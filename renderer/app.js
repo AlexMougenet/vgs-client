@@ -2,7 +2,7 @@
 let playerName = '';
 let playerColor = '#7cacff';
 let roomCode = '';
-let players = [];
+let players = {}; // Map of name -> { color, voicePack } (for other players)
 let settings = {
   volume: 80,
   overlayEnabled: true,
@@ -65,6 +65,13 @@ const els = {
   btnVoicePacksBackArrow: document.getElementById('btn-voice-packs-back-arrow'),
   vpSearch: document.getElementById('vp-search'),
   vpGrid: document.getElementById('vp-grid'),
+  btnClearCache: document.getElementById('btn-clear-cache'),
+  playerModal: document.getElementById('player-modal'),
+  pmUsername: document.getElementById('pm-username'),
+  pmColorBox: document.getElementById('pm-color-box'),
+  pmVoicepack: document.getElementById('pm-voicepack'),
+  pmArtwork: document.getElementById('pm-artwork'),
+  btnCloseModal: document.getElementById('btn-close-modal'),
 };
 
 // Helper: convert e.code to a short display label using e.key
@@ -101,14 +108,80 @@ function generateRoomCode() {
 // Render player list
 function renderPlayers() {
   els.playerList.innerHTML = '';
-  const allPlayers = [playerName, ...players];
-  for (const name of allPlayers) {
+  const allNames = [playerName, ...Object.keys(players)];
+  for (const name of allNames) {
     const li = document.createElement('li');
     li.textContent = name;
+    
+    const info = (name === playerName) 
+      ? { color: playerColor, voicePack: userPrefs.voicePack || 'default' } 
+      : players[name];
+    
+    if (info && info.color) {
+      li.style.color = info.color;
+      li.style.borderColor = info.color;
+    }
+    
     if (name === playerName) li.classList.add('self');
+    
+    li.addEventListener('click', () => {
+      showPlayerInfo(name, info);
+    });
+    
     els.playerList.appendChild(li);
   }
 }
+
+async function showPlayerInfo(name, info) {
+  els.pmUsername.textContent = name;
+  els.pmColorBox.style.backgroundColor = info.color || 'var(--accent)';
+  
+  // Find voice pack name and artwork from ID
+  let vpName = 'Default';
+  let artSrc = '';
+  
+  if (info.voicePack && info.voicePack !== 'default') {
+    if (voicePacksList.length === 0) {
+      voicePacksList = await window.vgsAPI.getVoicePacks();
+    }
+    const pack = voicePacksList.find(p => p.id === info.voicePack);
+    if (pack) {
+      vpName = pack.name;
+      artSrc = pack.artwork || '';
+    } else {
+      vpName = info.voicePack;
+    }
+  }
+  
+  els.pmVoicepack.textContent = vpName;
+  if (artSrc) {
+    els.pmArtwork.src = artSrc;
+    els.pmArtwork.classList.remove('hidden');
+  } else {
+    els.pmArtwork.classList.add('hidden');
+  }
+  
+  els.playerModal.classList.add('active');
+}
+
+// Close modal on background click
+els.playerModal.addEventListener('click', (e) => {
+  if (e.target === els.playerModal) {
+    els.playerModal.classList.remove('active');
+  }
+});
+
+els.btnCloseModal.addEventListener('click', () => {
+  els.playerModal.classList.remove('active');
+});
+
+els.pmVoicepack.addEventListener('click', () => {
+  const text = els.pmVoicepack.textContent;
+  navigator.clipboard.writeText(text);
+  const original = text;
+  els.pmVoicepack.textContent = 'Copied!';
+  setTimeout(() => { if (els.pmVoicepack.textContent === 'Copied!') els.pmVoicepack.textContent = original; }, 1500);
+});
 
 function escapeHtml(str) {
   const div = document.createElement('div');
@@ -142,8 +215,8 @@ function playFromUrl(url) {
   if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
   const audio = new Audio(url);
   audio.volume = settings.volume / 100;
-  audio.play().catch((e) => { 
-    addEvent(`<span style="color:var(--danger)">Audio error: ${escapeHtml(e.message || String(e))}</span>`); 
+  audio.play().catch((e) => {
+    addEvent(`<span style="color:var(--danger)">Audio error: ${escapeHtml(e.message || String(e))}</span>`);
   });
   currentAudio = audio;
 }
@@ -248,6 +321,26 @@ els.btnSettings.addEventListener('click', () => {
   showView('settings');
 });
 
+els.btnClearCache.addEventListener('click', async () => {
+  els.btnClearCache.disabled = true;
+  els.btnClearCache.textContent = 'Clearing...';
+  try {
+    const response = await window.vgsAPI.clearCache();
+    if (response && response.success) {
+      addEvent('<span style="color:var(--success)">Voice pack cache cleared</span>');
+      els.btnClearCache.textContent = 'Cleared';
+    } else {
+      addEvent('<span style="color:var(--danger)">Failed to clear cache</span>');
+      els.btnClearCache.disabled = false;
+      els.btnClearCache.textContent = 'Clear cache';
+    }
+  } catch (err) {
+    addEvent(`<span style="color:var(--danger)">Cache clearer error: ${escapeHtml(err.message)}</span>`);
+    els.btnClearCache.disabled = false;
+    els.btnClearCache.textContent = 'Clear cache';
+  }
+});
+
 // Settings
 els.volumeSlider.value = settings.volume;
 els.volumeValue.textContent = `${settings.volume}%`;
@@ -296,18 +389,23 @@ window.vgsAPI.onWsMessage((msg) => {
       addEvent(`<span style="color:var(--danger)">Error: ${escapeHtml(msg.message)}</span>`);
       break;
     case 'room_state':
-      players = msg.players || [];
+      // The server might send the players as an object {name: {color, voicePack}, ...} 
+      // or if not, we try to preserve what we have.
+      players = msg.players || {};
       renderPlayers();
       break;
     case 'player_joined':
-      if (!players.includes(msg.playerName)) {
-        players.push(msg.playerName);
+      if (msg.playerName !== playerName) {
+        players[msg.playerName] = { 
+          color: msg.playerColor, 
+          voicePack: msg.voicePack 
+        };
       }
       renderPlayers();
-      addEvent(`<span class="event-player">${escapeHtml(msg.playerName)}</span> joined`);
+      addEvent(`<span class="event-player" style="color:${msg.playerColor || 'var(--accent)'}">${escapeHtml(msg.playerName)}</span> joined`);
       break;
     case 'player_left':
-      players = players.filter(p => p !== msg.playerName);
+      delete players[msg.playerName];
       renderPlayers();
       addEvent(`<span class="event-player">${escapeHtml(msg.playerName)}</span> left`);
       break;
@@ -675,7 +773,7 @@ function renderVoicePacks(filter = '') {
   const activePack = userPrefs.voicePack || 'default';
 
   const filtered = voicePacksList.filter(p =>
-    !filterLower || p.name.toLowerCase().includes(filterLower)
+    (!filterLower || p.name.toLowerCase().includes(filterLower)) && !p.disabled
   );
 
   if (filtered.length === 0) {
@@ -693,6 +791,18 @@ function buildPackCard(pack, activePack) {
   const card = document.createElement('div');
   card.className = 'vp-card' + (isActive ? ' vp-card-active' : '');
 
+  // Name (Title)
+  const name = document.createElement('div');
+  name.className = 'vp-name';
+  name.textContent = pack.name;
+  if (isActive) {
+    const badge = document.createElement('span');
+    badge.className = 'vp-active-badge';
+    badge.textContent = 'Active';
+    name.appendChild(badge);
+  }
+  card.appendChild(name);
+
   // Artwork
   const art = document.createElement('div');
   art.className = 'vp-art';
@@ -707,32 +817,13 @@ function buildPackCard(pack, activePack) {
   }
   card.appendChild(art);
 
-  // Info
-  const info = document.createElement('div');
-  info.className = 'vp-info';
-
-  const name = document.createElement('div');
-  name.className = 'vp-name';
-  name.textContent = pack.name;
-  if (isActive) {
-    const badge = document.createElement('span');
-    badge.className = 'vp-active-badge';
-    badge.textContent = 'Active';
-    name.appendChild(badge);
-  }
-  info.appendChild(name);
-
+  // Description
+  const desc = document.createElement('div');
+  desc.className = 'vp-desc';
   if (pack.description) {
-    const desc = document.createElement('div');
-    desc.className = 'vp-desc';
     desc.textContent = pack.description;
-    info.appendChild(desc);
   }
-
-  // Removed sound count display
-
-
-  card.appendChild(info);
+  card.appendChild(desc);
 
   // Buttons
   const btns = document.createElement('div');
@@ -748,7 +839,7 @@ function buildPackCard(pack, activePack) {
   if (!isActive) {
     const useBtn = document.createElement('button');
     useBtn.className = 'btn-primary vp-use-btn';
-    useBtn.textContent = 'Use this';
+    useBtn.textContent = 'Use';
     useBtn.addEventListener('click', () => setActiveVoicePack(pack.id));
     btns.appendChild(useBtn);
   }

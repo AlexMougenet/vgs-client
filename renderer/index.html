@@ -17,8 +17,8 @@
     </div>
     <div class="form-group">
       <label for="server-url">Server URL</label>
-      <input type="text" id="server-url" value="https://vgs-server.onrender.com"
-        placeholder="https://vgs-server.onrender.com">
+      <input type="text" id="server-url" value="vgs-server-production.up.railway.app"
+        placeholder="vgs-server-production.up.railway.app">
     </div>
     <div class="form-group">
       <label for="player-name">Player Name</label>
@@ -95,7 +95,15 @@
     </div>
     <button id="btn-keybinds" class="btn-primary btn-outline">Customize Keybinds</button>
     <button id="btn-voice-packs" class="btn-primary btn-outline">Voice Packs</button>
-    <button id="btn-back" class="btn-primary">Back to Lobby</button>
+
+    <div class="form-group" style="margin-top: 20px;">
+      <button id="btn-clear-cache" class="btn-danger">Clear cache</button>
+      <div class="hint" style="margin-top: 8px; font-size: 0.85em;">Deletes the downloaded voice packs. This is safe and
+        recommanded after a certain period of time, and will only add a very small delay when playing a voice pack for
+        the first time.</div>
+    </div>
+
+    <button id="btn-back" class="btn-primary" style="margin-top: auto;">Back to Lobby</button>
   </div>
 
   <!-- Voice Packs View -->
@@ -140,6 +148,127 @@
       <button id="btn-keybinds-back" class="btn-primary">Save &amp; Back</button>
     </div>
   </div>
+
+  <!-- Player Modal -->
+  <div id="player-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="pm-username">Username</h2>
+        <button id="btn-close-modal" class="btn-icon">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="pref-item">
+          <label>Color</label>
+          <div id="pm-color-box" class="color-box"></div>
+        </div>
+        <div class="pref-item">
+          <label>Voice Pack</label>
+          <div id="pm-voicepack" class="voicepack-name" title="Click to copy">Default</div>
+          <img id="pm-artwork" class="modal-artwork hidden" alt="Voice pack artwork">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Compact styles for the modal within index.html to save analysis tokens */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.73);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 250px;
+      padding: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-header h2 {
+      font-size: 18px;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .color-box {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+    }
+
+    .pref-item {
+      margin-bottom: 12px;
+    }
+
+    .pref-item label {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .voicepack-name {
+      cursor: pointer;
+      color: var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 4px 0;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .voicepack-name:hover {
+      text-decoration: underline;
+    }
+
+    .modal-artwork {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .player-list li {
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .player-list li:hover {
+      transform: scale(1.05);
+    }
+  </style>
 
   <script src="app.js"></script>
 </body>

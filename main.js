@@ -6,7 +6,7 @@ const { uIOhook, UiohookKey } = require('uiohook-napi');
 const { VGSStateMachine } = require('./vgs/stateMachine');
 const { buildDefaultKeybinds, mergeKeybinds, buildTreeFromKeybinds } = require('./vgs/keybinds');
 const commands = require('./vgs/VGS_sound.json');
-const voicePacksRegistry = require('./vgs/voice_packs.json');
+const voicePacksRegistry = require('./assets/voice_packs.json');
 const keyBlocker = require('./vgs/keyBlocker');
 
 let mainWindow;
@@ -75,20 +75,20 @@ function downloadFile(url, destPath) {
     const req = protocol.get(url, (response) => {
       if (response.statusCode !== 200) {
         file.destroy();
-        try { fs.unlinkSync(destPath); } catch {}
+        try { fs.unlinkSync(destPath); } catch { }
         reject(new Error(`HTTP ${response.statusCode} for ${url}`));
         return;
       }
       response.pipe(file);
       file.on('finish', () => { file.close(); resolve(); });
       file.on('error', (err) => {
-        try { fs.unlinkSync(destPath); } catch {}
+        try { fs.unlinkSync(destPath); } catch { }
         reject(err);
       });
     });
     req.on('error', (err) => {
       file.destroy();
-      try { fs.unlinkSync(destPath); } catch {}
+      try { fs.unlinkSync(destPath); } catch { }
       reject(err);
     });
   });
@@ -167,8 +167,8 @@ for (const [name, code] of Object.entries(numpadMap)) {
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
-    width: 520,
-    height: 720,
+    width: 580,
+    height: 740,
     resizable: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -211,12 +211,9 @@ function createOverlayWindow() {
 }
 
 function createVgsMenuWindow() {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-  const menuW = 280;
-  const menuH = 460;
   vgsMenuWindow = new BrowserWindow({
-    width: menuW,
-    height: menuH,
+    width: 280,
+    height: 600,
     x: 20,
     y: 200,
     alwaysOnTop: true,
@@ -251,7 +248,13 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
   ws = new WebSocket(serverUrl);
 
   ws.on('open', () => {
-    ws.send(JSON.stringify({ type: 'join', roomCode, playerName }));
+    ws.send(JSON.stringify({ 
+      type: 'join', 
+      roomCode, 
+      playerName, 
+      playerColor: currentPlayerColor,
+      voicePack: userPrefs.voicePack || 'default'
+    }));
     if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('ws-message', { type: 'connected' });
   });
 
@@ -456,13 +459,26 @@ ipcMain.handle('get-voice-packs', () => {
 ipcMain.handle('get-voice-sound', async (event, { voicePackId, commandId }) => {
   const localPath = await resolveVoiceSound(voicePackId, commandId);
   if (!localPath) return null; // null if unavailable or default pack
-  
+
   try {
     const data = fs.readFileSync(localPath);
     return `data:audio/ogg;base64,${data.toString('base64')}`;
   } catch (err) {
     console.error(`[VoicePack] Failed to read cached file: ${err.message}`);
     return null;
+  }
+});
+
+ipcMain.handle('clear-cache', async () => {
+  try {
+    const soundsDir = path.join(app.getPath('userData'), 'sounds');
+    if (fs.existsSync(soundsDir)) {
+      fs.rmSync(soundsDir, { recursive: true, force: true });
+    }
+    return { success: true };
+  } catch (err) {
+    console.error(`[VoicePack] Failed to clear cache: ${err.message}`);
+    return { success: false, error: err.message };
   }
 });
 

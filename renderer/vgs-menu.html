@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>VGS Menu</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       background: transparent;
       overflow: hidden;
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       height: 100%;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      /* align-items: center;
+      justify-content: center; */
     }
 
     #vgs-menu {
@@ -41,7 +48,7 @@
       border-radius: 6px;
     }
 
-    .option + .option {
+    .option+.option {
       margin-top: 2px;
     }
 
@@ -71,6 +78,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="vgs-menu"></div>
   <script>
@@ -98,4 +106,5 @@
     }
   </script>
 </body>
+
 </html>

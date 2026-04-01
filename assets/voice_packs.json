@@ -1,5 +1,13 @@
 [
     {
+        "id": "default",
+        "name": "Default",
+        "description": "Built-in VGS voice (uses local sound files)",
+        "artwork": null,
+        "sounds": {},
+        "disabled": true
+    },
+    {
         "id": "AangMerlin",
         "name": "Aang Merlin",
         "description": "Aang.",
@@ -3428,7 +3436,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/9/96/BaronessIzanami_VOX_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/b/bc/BaronessIzanami_VOX_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "BassDemonRaijin",
@@ -4511,7 +4519,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/17/BeachBabe_Aphro_VVX.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/0b/BeachBabe_Aphro_VVY.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "BeakyBotThoth",
@@ -16565,7 +16573,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/82/CuriousCritterRatatoskr_VOX_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/85/CuriousCritterRatatoskr_VOX_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "CurseVoiceApollo",
@@ -19084,7 +19092,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/1/16/DarkAngelAhMuzenCab_VOX_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/05/DarkAngelAhMuzenCab_VOX_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "DarkLordChaac",
@@ -27384,7 +27392,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/8/83/Izanami_Dreadful_DollVGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/c/c3/Izanami_Dreadful_DollVGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "DreamweaverGanesha",
@@ -50274,7 +50282,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/0/04/IronmousePersephone_VOX_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f3/IronmousePersephone_VOX_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "ItsyBitsyChibiArachne",
@@ -67378,7 +67386,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/4/46/NecroFumesAgni_VOX_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6e/NecroFumesAgni_VOX_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "NecrowmancerAhPuch",
@@ -71492,7 +71500,7 @@
             "VVW": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/f3/OniMusha_Other_W.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/f/fb/OniMusha_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "OniRoninAnhur",
@@ -74666,7 +74674,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/5/55/Izanami_Plague-Bearer_VGS_Cancel.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/6/6c/Izanami_Plague-Bearer_VGS_Emote_Yes.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "PlagueLordHades",
@@ -87384,7 +87392,7 @@
             "VVX": "https://static.wikia.nocookie.net/smite_gamepedia/images/d/dc/Scarlet_Isis_VVX.ogg",
             "VVY": "https://static.wikia.nocookie.net/smite_gamepedia/images/2/25/Scarlet_Isis_VVY.ogg"
         },
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "ScarletDangerfieldNeith",

@@ -21,6 +21,7 @@ contextBridge.exposeInMainWorld('vgsAPI', {
   // Voice Packs
   getVoicePacks: () => ipcRenderer.invoke('get-voice-packs'),
   getVoiceSound: (voicePackId, commandId) => ipcRenderer.invoke('get-voice-sound', { voicePackId, commandId }),
+  clearCache: () => ipcRenderer.invoke('clear-cache'),
 
   // Events from main process
   onWsMessage: (callback) => {

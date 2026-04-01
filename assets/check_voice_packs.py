@@ -14,7 +14,7 @@ def main():
 
     for vp in voice_packs:
         sounds_count = len(vp.get("sounds", {}))
-        if sounds_count < 140:
+        if sounds_count < 145:
             vp["disabled"] = True
         else:
             vp["disabled"] = False

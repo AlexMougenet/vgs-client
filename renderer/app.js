@@ -431,6 +431,39 @@ window.vgsAPI.onVgsActive((active) => {
   els.vgsIndicator.classList.toggle('hidden', !active);
 });
 
+// Play dynamic system sounds
+window.vgsAPI.onPlaySystemSound((data) => {
+  if (settings.volume === 0) return;
+  
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  
+  osc.type = 'sine';
+  
+  // Base volume scaled by user settings, maxed at a gentle 0.1
+  const maxVol = (settings.volume / 100) * 0.1;
+  const startVol = maxVol * 0.5;
+  
+  gain.gain.setValueAtTime(0, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(maxVol, ctx.currentTime + 0.05);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+  
+  if (data.type === 'join') {
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+  } else {
+    osc.frequency.setValueAtTime(659.25, ctx.currentTime); // E5
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime + 0.1); // C5
+  }
+  
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 0.5);
+});
+
 // === Keybind Editor ===
 // Uses e.code (physical key identity) for matching — works on any keyboard layout.
 // Uses e.key (layout character) for display — shows what the user sees on their keyboard.

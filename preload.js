@@ -36,6 +36,9 @@ contextBridge.exposeInMainWorld('vgsAPI', {
   onPlaySound: (callback) => {
     ipcRenderer.on('play-sound', (event, data) => callback(data));
   },
+  onPlaySystemSound: (callback) => {
+    ipcRenderer.on('play-system-sound', (event, data) => callback(data));
+  },
 
   // Overlay
   onShowCallout: (callback) => {

@@ -266,6 +266,16 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
       if (msg.type === 'vgs_event') {
         showOverlay(msg.playerName, msg.label, msg.playerColor);
         if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('play-sound', { label: msg.label, sound: msg.sound });
+      } else if (msg.type === 'player_joined') {
+        if (msg.playerName !== currentPlayer) {
+          showOverlay('System', `${msg.playerName} joined`, msg.playerColor || '#aaa');
+          if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('play-system-sound', { type: 'join' });
+        }
+      } else if (msg.type === 'player_left') {
+        if (msg.playerName !== currentPlayer) {
+          showOverlay('System', `${msg.playerName} left`, '#aaa');
+          if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('play-system-sound', { type: 'leave' });
+        }
       }
     } catch { }
   });

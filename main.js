@@ -236,11 +236,26 @@ function createVgsMenuWindow() {
   vgsMenuWindow.showInactive();
 }
 
+let pingIntervalId = null;
+let reconnectTimeoutId = null;
+let intentionallyClosed = true;
+let currentServerUrl = null;
+
 function connectToServer(serverUrl, roomCode, playerName, playerColor) {
-  if (ws) {
-    ws.close();
+  intentionallyClosed = false;
+  if (reconnectTimeoutId) {
+    clearTimeout(reconnectTimeoutId);
+    reconnectTimeoutId = null;
   }
 
+  if (ws) {
+    // Avoid double-close events or dangling listeners
+    ws.removeAllListeners();
+    ws.close();
+    ws = null;
+  }
+
+  currentServerUrl = serverUrl;
   currentRoom = roomCode;
   currentPlayer = playerName;
   currentPlayerColor = playerColor || '#7cacff';
@@ -255,6 +270,14 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
       playerColor: currentPlayerColor,
       voicePack: userPrefs.voicePack || 'default'
     }));
+    
+    if (pingIntervalId) clearInterval(pingIntervalId);
+    pingIntervalId = setInterval(() => {
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ type: 'ping' }));
+      }
+    }, 20000); // 20s keep-alive
+
     if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('ws-message', { type: 'connected' });
   });
 
@@ -281,7 +304,21 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
   });
 
   ws.on('close', () => {
+    if (pingIntervalId) {
+      clearInterval(pingIntervalId);
+      pingIntervalId = null;
+    }
+
     if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('ws-message', { type: 'disconnected' });
+
+    if (!intentionallyClosed && currentServerUrl && currentRoom) {
+      if (reconnectTimeoutId) clearTimeout(reconnectTimeoutId);
+      reconnectTimeoutId = setTimeout(() => {
+        if (!intentionallyClosed && currentServerUrl) {
+          connectToServer(currentServerUrl, currentRoom, currentPlayer, currentPlayerColor);
+        }
+      }, 5000);
+    }
   });
 
   ws.on('error', (err) => {
@@ -420,12 +457,24 @@ ipcMain.on('join-room', (event, { serverUrl, roomCode, playerName, playerColor }
 });
 
 ipcMain.on('disconnect', () => {
+  intentionallyClosed = true;
+  if (reconnectTimeoutId) {
+    clearTimeout(reconnectTimeoutId);
+    reconnectTimeoutId = null;
+  }
+  if (pingIntervalId) {
+    clearInterval(pingIntervalId);
+    pingIntervalId = null;
+  }
+  
   if (ws) {
+    ws.removeAllListeners();
     ws.close();
     ws = null;
   }
   currentRoom = null;
   currentPlayer = null;
+  currentServerUrl = null;
 });
 
 ipcMain.handle('get-user-prefs', () => {

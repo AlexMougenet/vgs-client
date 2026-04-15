@@ -97,10 +97,16 @@ function downloadFile(url, destPath) {
 async function resolveVoiceSound(voicePackId, commandId) {
   if (!voicePackId || voicePackId === 'default' || !commandId) return null;
 
+  if (commandId === 'VEL') {
+    const laughs = ['VEL1', 'VEL2', 'VEL3'];
+    commandId = laughs[Math.floor(Math.random() * laughs.length)];
+  }
+
   const pack = voicePacksRegistry.find(p => p.id === voicePackId);
   if (!pack || !pack.sounds || !pack.sounds[commandId]) return null;
 
   const url = pack.sounds[commandId];
+
   const soundDir = path.join(app.getPath('userData'), 'sounds', voicePackId);
   // Extract filename from URL (from 'vox' to '.ogg')
   const lastPart = url.split('/').pop().split('?')[0];
@@ -164,6 +170,7 @@ for (const [name, code] of Object.entries(numpadMap)) {
     keycodeToCode[UiohookKey[name]] = code;
   }
 }
+keycodeToCode[UiohookKey.Escape] = 'Escape';
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
@@ -240,9 +247,13 @@ let pingIntervalId = null;
 let reconnectTimeoutId = null;
 let intentionallyClosed = true;
 let currentServerUrl = null;
+let reconnectDelay = 5000; // start at 5s, backs off exponentially
+let isReconnecting = false;
 
 function connectToServer(serverUrl, roomCode, playerName, playerColor) {
   intentionallyClosed = false;
+  isReconnecting = false;
+  reconnectDelay = 5000; // reset backoff on a fresh intentional connect
   if (reconnectTimeoutId) {
     clearTimeout(reconnectTimeoutId);
     reconnectTimeoutId = null;
@@ -263,14 +274,16 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
   ws = new WebSocket(serverUrl);
 
   ws.on('open', () => {
-    ws.send(JSON.stringify({ 
-      type: 'join', 
-      roomCode, 
-      playerName, 
+    isReconnecting = false;
+    reconnectDelay = 5000; // reset backoff on successful connect
+    ws.send(JSON.stringify({
+      type: 'join',
+      roomCode,
+      playerName,
       playerColor: currentPlayerColor,
       voicePack: userPrefs.voicePack || 'default'
     }));
-    
+
     if (pingIntervalId) clearInterval(pingIntervalId);
     pingIntervalId = setInterval(() => {
       if (ws && ws.readyState === WebSocket.OPEN) {
@@ -311,13 +324,17 @@ function connectToServer(serverUrl, roomCode, playerName, playerColor) {
 
     if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('ws-message', { type: 'disconnected' });
 
-    if (!intentionallyClosed && currentServerUrl && currentRoom) {
+    if (!intentionallyClosed && currentServerUrl && currentRoom && !isReconnecting) {
+      isReconnecting = true;
       if (reconnectTimeoutId) clearTimeout(reconnectTimeoutId);
+      console.log(`[WS] Reconnecting in ${reconnectDelay / 1000}s...`);
       reconnectTimeoutId = setTimeout(() => {
+        isReconnecting = false;
         if (!intentionallyClosed && currentServerUrl) {
+          reconnectDelay = Math.min(reconnectDelay * 2, 40000); // cap at 40s
           connectToServer(currentServerUrl, currentRoom, currentPlayer, currentPlayerColor);
         }
-      }, 5000);
+      }, reconnectDelay);
     }
   });
 
@@ -351,6 +368,20 @@ function onVgsMatch(command, label, sound) {
   const commandId = getCommandId(command);
   const voicePackId = userPrefs.voicePack || 'default';
 
+  let actualSound = sound;
+  if (commandId === 'VEL') {
+    const laughs = ['VOX_VGS_Laugh_1.ogg', 'VOX_VGS_Laugh_2.ogg', 'VOX_VGS_Laugh_3.ogg'];
+    actualSound = laughs[Math.floor(Math.random() * laughs.length)];
+  }
+  else if (commandId === 'VET') {
+    const laughs = ['VOX_VGS_Taunt_1.ogg', 'VOX_VGS_Taunt_2.ogg', 'VOX_VGS_Taunt_3.ogg'];
+    actualSound = laughs[Math.floor(Math.random() * laughs.length)];
+  }
+  else if (commandId === 'VEJ') {
+    const laughs = ['VOX_VGS_Joke_1.ogg', 'VOX_VGS_Joke_2.ogg', 'VOX_VGS_Joke_3.ogg'];
+    actualSound = laughs[Math.floor(Math.random() * laughs.length)];
+  }
+
   if (ws && ws.readyState === WebSocket.OPEN && currentRoom) {
     ws.send(JSON.stringify({
       type: 'vgs_event',
@@ -361,12 +392,12 @@ function onVgsMatch(command, label, sound) {
       commandId,
       voicePackId,
       label,
-      sound,
+      sound: actualSound,
     }));
   }
 
   showOverlay(currentPlayer || 'You', label, currentPlayerColor);
-  if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('vgs-triggered', { command, commandId, voicePackId, label, sound });
+  if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send('vgs-triggered', { command, commandId, voicePackId, label, sound: actualSound });
 }
 
 // VGS reset callback — fires on timeout, no-match, or after a match completes
@@ -466,7 +497,7 @@ ipcMain.on('disconnect', () => {
     clearInterval(pingIntervalId);
     pingIntervalId = null;
   }
-  
+
   if (ws) {
     ws.removeAllListeners();
     ws.close();

@@ -2,7 +2,7 @@
 let playerName = '';
 let playerColor = '#7cacff';
 let roomCode = '';
-let players = {}; // Map of name -> { color, voicePack } (for other players)
+let players = {}; // { [name]: { color, voicePack } } for other players
 let settings = {
   volume: 80,
   overlayEnabled: true,
@@ -112,22 +112,22 @@ function renderPlayers() {
   for (const name of allNames) {
     const li = document.createElement('li');
     li.textContent = name;
-    
-    const info = (name === playerName) 
-      ? { color: playerColor, voicePack: userPrefs.voicePack || 'default' } 
+
+    const info = (name === playerName)
+      ? { color: playerColor, voicePack: userPrefs.voicePack || 'default' }
       : players[name];
-    
+
     if (info && info.color) {
       li.style.color = info.color;
       li.style.borderColor = info.color;
     }
-    
+
     if (name === playerName) li.classList.add('self');
-    
+
     li.addEventListener('click', () => {
       showPlayerInfo(name, info);
     });
-    
+
     els.playerList.appendChild(li);
   }
 }
@@ -135,11 +135,11 @@ function renderPlayers() {
 async function showPlayerInfo(name, info) {
   els.pmUsername.textContent = name;
   els.pmColorBox.style.backgroundColor = info.color || 'var(--accent)';
-  
+
   // Find voice pack name and artwork from ID
   let vpName = 'Default';
   let artSrc = '';
-  
+
   if (info.voicePack && info.voicePack !== 'default') {
     if (voicePacksList.length === 0) {
       voicePacksList = await window.vgsAPI.getVoicePacks();
@@ -152,7 +152,7 @@ async function showPlayerInfo(name, info) {
       vpName = info.voicePack;
     }
   }
-  
+
   els.pmVoicepack.textContent = vpName;
   if (artSrc) {
     els.pmArtwork.src = artSrc;
@@ -160,7 +160,7 @@ async function showPlayerInfo(name, info) {
   } else {
     els.pmArtwork.classList.add('hidden');
   }
-  
+
   els.playerModal.classList.add('active');
 }
 
@@ -205,20 +205,17 @@ function addEvent(text) {
 }
 
 // Audio playback
-let currentAudio = null;
 
 function playFromUrl(url) {
   if (!url) {
     addEvent('<span style="color:var(--danger)">Play error: URL is empty</span>');
     return;
   }
-  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
   const audio = new Audio(url);
   audio.volume = settings.volume / 100;
   audio.play().catch((e) => {
     addEvent(`<span style="color:var(--danger)">Audio error: ${escapeHtml(e.message || String(e))}</span>`);
   });
-  currentAudio = audio;
 }
 
 function playSound(soundFile) {
@@ -266,7 +263,7 @@ function joinRoom() {
   playerName = name;
   playerColor = color;
   roomCode = code;
-  players = [];
+  players = {};
 
   // Save user preferences
   userPrefs.name = name;
@@ -312,7 +309,7 @@ els.btnCopyCode.addEventListener('click', () => {
 
 els.btnDisconnect.addEventListener('click', () => {
   window.vgsAPI.disconnect();
-  players = [];
+  players = {};
   showView('connect');
 });
 
@@ -389,16 +386,17 @@ window.vgsAPI.onWsMessage((msg) => {
       addEvent(`<span style="color:var(--danger)">Error: ${escapeHtml(msg.message)}</span>`);
       break;
     case 'room_state':
-      // The server might send the players as an object {name: {color, voicePack}, ...} 
-      // or if not, we try to preserve what we have.
-      players = msg.players || {};
+      // Server sends { [name]: { color, voicePack } } for all existing members except self.
+      players = (msg.players && typeof msg.players === 'object' && !Array.isArray(msg.players))
+        ? msg.players
+        : {};
       renderPlayers();
       break;
     case 'player_joined':
       if (msg.playerName !== playerName) {
-        players[msg.playerName] = { 
-          color: msg.playerColor, 
-          voicePack: msg.voicePack 
+        players[msg.playerName] = {
+          color: msg.playerColor,
+          voicePack: msg.voicePack
         };
       }
       renderPlayers();
@@ -434,24 +432,24 @@ window.vgsAPI.onVgsActive((active) => {
 // Play dynamic system sounds
 window.vgsAPI.onPlaySystemSound((data) => {
   if (settings.volume === 0) return;
-  
+
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
-  
+
   osc.connect(gain);
   gain.connect(ctx.destination);
-  
+
   osc.type = 'sine';
-  
+
   // Base volume scaled by user settings, maxed at a gentle 0.1
   const maxVol = (settings.volume / 100) * 0.1;
   const startVol = maxVol * 0.5;
-  
+
   gain.gain.setValueAtTime(0, ctx.currentTime);
   gain.gain.linearRampToValueAtTime(maxVol, ctx.currentTime + 0.05);
   gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-  
+
   if (data.type === 'join') {
     osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
     osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
@@ -459,7 +457,7 @@ window.vgsAPI.onPlaySystemSound((data) => {
     osc.frequency.setValueAtTime(659.25, ctx.currentTime); // E5
     osc.frequency.setValueAtTime(523.25, ctx.currentTime + 0.1); // C5
   }
-  
+
   osc.start(ctx.currentTime);
   osc.stop(ctx.currentTime + 0.5);
 });
@@ -806,7 +804,7 @@ function renderVoicePacks(filter = '') {
   const activePack = userPrefs.voicePack || 'default';
 
   const filtered = voicePacksList.filter(p =>
-    (!filterLower || p.name.toLowerCase().includes(filterLower)) && !p.disabled
+    (!filterLower || p.name.toLowerCase().includes(filterLower))
   );
 
   if (filtered.length === 0) {
@@ -875,6 +873,13 @@ function buildPackCard(pack, activePack) {
     useBtn.textContent = 'Use';
     useBtn.addEventListener('click', () => setActiveVoicePack(pack.id));
     btns.appendChild(useBtn);
+  }
+
+  if (pack.disabled) {
+    const warn = document.createElement('div');
+    warn.className = 'vp-disabled-warning';
+    warn.textContent = 'this voice pack may be incomplete';
+    btns.appendChild(warn);
   }
 
   card.appendChild(btns);

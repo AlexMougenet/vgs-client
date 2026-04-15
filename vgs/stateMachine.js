@@ -21,6 +21,11 @@ class VGSStateMachine {
   handleKey(code) {
     if (!this.active) return false;
 
+    if (code === 'Escape') {
+      this.reset();
+      return true;
+    }
+
     // code is an e.code string like "KeyA", "Digit1"
     const child = this.currentNode[code];
 

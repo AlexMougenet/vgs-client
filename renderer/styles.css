@@ -575,6 +575,7 @@ input[type="checkbox"] {
   gap: 8px;
   width: 100%;
   margin-top: auto;
+  position: relative;
 }
 
 .vp-test-btn,
@@ -588,6 +589,18 @@ input[type="checkbox"] {
 .vp-testing {
   border-color: var(--accent) !important;
   color: var(--accent) !important;
+}
+
+.vp-disabled-warning {
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  color: var(--danger);
+  font-size: 8px;
+  text-align: center;
+  pointer-events: none;
+  font-weight: 500;
 }
 
 /* Keybinds */

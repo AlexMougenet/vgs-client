@@ -33,7 +33,7 @@ let isBlocking = false;
 // Movement keys that should NEVER be blocked (VK codes)
 // Covers WASD (QWERTY) + ZQSD (AZERTY) + Space
 const PASSTHROUGH_KEYS = new Set([
-  0x57, // W
+  // 0x57, // W
   // 0x41, // A
   0x53, // S
   0x44, // D

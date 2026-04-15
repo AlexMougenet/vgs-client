@@ -597,8 +597,6 @@ app.whenReady().then(() => {
       ws.close();
       ws = null;
     }
-    keyBlocker.stop();
-    uIOhook.stop();
   });
 
   mainWindow.on('closed', () => {
@@ -607,8 +605,16 @@ app.whenReady().then(() => {
   });
 });
 
+app.on('will-quit', () => {
+  // Single, authoritative cleanup point — avoids double-stopping native hooks
+  try { keyBlocker.stop(); } catch { }
+  try { uIOhook.stop(); } catch { }
+
+  // Hard-kill fallback: if the native hooks stall the event loop, force-exit
+  // after 2s so the NSIS installer never sees a lingering process.
+  setTimeout(() => process.exit(0), 2000).unref();
+});
+
 app.on('window-all-closed', () => {
-  keyBlocker.stop();
-  uIOhook.stop();
   app.quit();
 });

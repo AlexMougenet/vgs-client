@@ -101,6 +101,14 @@ async function resolveVoiceSound(voicePackId, commandId) {
     const laughs = ['VEL1', 'VEL2', 'VEL3'];
     commandId = laughs[Math.floor(Math.random() * laughs.length)];
   }
+  else if (commandId === 'VET') {
+    const laughs = ['VET1', 'VET2', 'VET3'];
+    commandId = laughs[Math.floor(Math.random() * laughs.length)];
+  }
+  else if (commandId === 'VEJ') {
+    const laughs = ['VEJ1', 'VEJ2', 'VEJ3'];
+    commandId = laughs[Math.floor(Math.random() * laughs.length)];
+  }
 
   const pack = voicePacksRegistry.find(p => p.id === voicePackId);
   if (!pack || !pack.sounds || !pack.sounds[commandId]) return null;
@@ -571,6 +579,8 @@ ipcMain.handle('clear-cache', async () => {
     return { success: false, error: err.message };
   }
 });
+
+ipcMain.handle('get-app-version', () => app.getVersion());
 
 ipcMain.on('reset-keybinds', () => {
   keybinds = { ...defaultKeybinds, binds: { ...defaultKeybinds.binds } };

@@ -975,4 +975,11 @@ saveSettings();
   applyPrefs();
   // Re-apply after a short delay to beat Chromium autofill
   setTimeout(applyPrefs, 100);
+
+  // Show app version in settings
+  try {
+    const version = await window.vgsAPI.getAppVersion();
+    const versionEl = document.getElementById('app-version');
+    if (versionEl && version) versionEl.textContent = `v${version}`;
+  } catch { }
 })();
